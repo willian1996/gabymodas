@@ -8,9 +8,7 @@
     <link rel="stylesheet" type="text/css" href="css/materialize.css"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
-    <script src="js/jquery.min.js" type="text/javascript"></script>
-    <script src="js/jquery.mask.min.js"></script>
-    <script src="js/script.js"></script>
+    
 </head>
 
 <body>

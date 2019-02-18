@@ -20,11 +20,19 @@
       </div>
       <div class="footer-copyright">
         <div class="container">
-          Copyright © 2019
+          Copyright © 2019 - developed by <a href="https://www.instagram.com/williansales.webdev/">Willian</a>
         </div>
       </div>
         
     </footer>
+    <!--Jquery-->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.mask.min.js"></script>
+    <script src="js/pace.min.js"></script>
+    <!--Materilize JS-->
+    <script src="js/materialize.js"></script>
+    <script src="js/script.js"></script>
+
     
 </body>
 </html>
