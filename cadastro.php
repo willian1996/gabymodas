@@ -63,7 +63,7 @@
                 <div class="row">
                     <div class="input-field col s12">
                         <img src="img/endereco-cep.png"/>
-                        <input placeholder="CEP (opcional)" name="cep" type="text">
+                        <input class="cep" placeholder="CEP (opcional)" name="cep" type="text">
                     </div>
                 </div>
                 <!--Telefone 1-->
