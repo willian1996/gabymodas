@@ -1,9 +1,9 @@
 <?php
     require_once 'header.php'; 
 ?>
-<div class="row">
+<div id="sessaoSucesso">
     <div class="col s12 m12 l6">
-        <div id="sessaoSucesso" class="card-panel">
+        <div class="card-panel">
           <h5 class="header2">Confira seus dados</h5>
             <div id="dadosCliente" class="row">
                 <?php

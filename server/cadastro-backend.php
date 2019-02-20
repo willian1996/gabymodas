@@ -67,6 +67,7 @@ try{
     $id = $resultado['id'];
     
     $stmt->execute();
+    //passando o id e whatsapp por parametro get para o pagina sucesso.php
     header("Location: ../sucesso.php?id=$id&whatsapp=$whatsapp");
     
 }catch(PDOException $e){

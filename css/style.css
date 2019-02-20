@@ -1,6 +1,7 @@
 #menu{
     background-color: #F60C89; 
     height: 80px;
+    margin-bottom: 30px;
 }
 .logo-gaby-modas{
     padding-top: 10px;
@@ -9,16 +10,42 @@
     font-weight: 800;  
     
 }
-#formaulario-de-contato{
-    margin-top: 30px;
-}
-#sessaoSucesso{
-    margin-top: 30px;
-    min-height: 500px;
+@media only screen and (max-width: 480px) {
+    #formaulario-de-contato{
+        margin: 0 auto !important;
+        width: 95%;
+    }
+    #sessaoSucesso{
+        min-height: 500px;
+        background-color: ghostwhite;
+        margin: 0 auto !important;
+        width: 95%;
+        min-height: 400px;
     
-    background-color: ghostwhite;
+    }
+}
+@media only screen and (min-width: 481px) {
+    #formaulario-de-contato{
+        margin: 0 auto !important;
+        width: 60%;
+    }
+    #sessaoSucesso{
+        min-height: 500px;
+        background-color: ghostwhite;
+        margin: 0 auto !important;
+        width: 50%;
+        min-height: 400px;
+    
+    }
     
 }
+#listagemClientes{
+    margin: 0 auto !important;;
+    width: 60%;
+    min-height: 400px;
+}
+
+
 .header2{
     text-align: center;
 }
@@ -27,10 +54,31 @@
 }
 
 
+#modal-login {
+    max-width: 400px;
+    width: 90%;
+    height: 300px;
+    background-color: #FFF;
+    border-radius: 2%;
+    border: 2px solid #000000;
+    margin: 0 auto !important;
+}
+#loginUsuario{
+    padding: 15px;
+    
+}
+
+
+
+
+
+
+
 
 
 
 #page-footer{
+    margin-top: 30px;
     padding: 10px;
     background-color: #F60C89;
 }

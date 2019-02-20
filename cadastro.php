@@ -4,7 +4,7 @@
 
 
 <!---------------formulario----------------->
-<div id="formaulario-de-contato" class="row">
+<div id="formaulario-de-contato" >
     <div class="col s12 m12 l6">
         <div class="card-panel">
           <h5 class="header2">Cadastre-se</h5>
