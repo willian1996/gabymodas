@@ -11,7 +11,7 @@
                 $whatsapp = $_GET['whatsapp'];
                 require 'server/conexao.php';
                 try{
-                    $stmt = $conn->prepare("SELECT * FROM usuarios WHERE (id = '$id') and (whatsapp = '$whatsapp')"); 
+                    $stmt = $conn->prepare("SELECT * FROM clientes WHERE (id = '$id') and (whatsapp = '$whatsapp')"); 
                     $stmt->execute();
                     $resultado = $stmt->fetchAll(); 
                 } catch(PDOException $e){
@@ -22,19 +22,20 @@
                 
                 
                 <p>Nome: <?php echo $valor['nome_completo']; ?></p>
-                <p>Whatsapp: <?php echo $valor['whatsapp'];   ?></p>
+                <p>Whatsapp: <strong class="telefone"><?php echo $valor['whatsapp'];   ?></strong></p>
                 <p>Rua: <?php echo $valor['rua'];   ?></p>
                 <p>Número: <?php  echo $valor['numeroCasa'];  ?></p>
                 <p>Ponto de Referência: <?php  echo $valor['pontoDeReferencia'];  ?></p>
                 <p>Bairro: <?php echo $valor['bairro'];   ?></p>
                 <p>Cidade: <?php echo $valor['cidade'];   ?></p>
                 <p>CEP: <?php echo $valor['cep'];   ?></p>
-                <p>Telefone 1: <?php echo $valor['telefone1'];   ?></p>
-                <p>Telefone 2: <?php echo $valor['telefone2'];  ?></p>
+                <p>Telefone 1: <strong class="telefone"> <?php echo $valor['telefone1'];   ?></strong></p>
+                <p>Telefone 2: <strong class="telefone"> <?php echo $valor['telefone2'];  ?></strong></p>
                 <?php
                 }
                 ?>
             </div>
+            <div id="urlColado"></div>
             
             <div class="row">
                 <div class="input-field col s12">

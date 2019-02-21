@@ -21,7 +21,14 @@
         margin: 0 auto !important;
         width: 95%;
         min-height: 400px;
-    
+    }
+    #infoCliente{
+        min-height: 500px;
+        background-color: ghostwhite;
+        margin: 0 auto !important;
+        width: 95%;
+        min-height: 400px;
+        
     }
 }
 @media only screen and (min-width: 481px) {
@@ -35,7 +42,14 @@
         margin: 0 auto !important;
         width: 50%;
         min-height: 400px;
-    
+    }
+    #infoCliente{
+        min-height: 500px;
+        background-color: ghostwhite;
+        margin: 0 auto !important;
+        width: 300px;
+        min-height: 400px;
+       
     }
     
 }
@@ -52,6 +66,9 @@
 .dadosCliente{
     padding: 20px 10px 20px 10px;
 }
+.containerLogin{
+    min-height: 400px;
+}
 
 
 #modal-login {
@@ -62,10 +79,16 @@
     border-radius: 2%;
     border: 2px solid #000000;
     margin: 0 auto !important;
+    margin-top: 100px !important;
+    
 }
 #loginUsuario{
     padding: 15px;
     
+}
+#urlColado{
+    text-decoration: underline;
+    margin-bottom: 20px;
 }
 
 

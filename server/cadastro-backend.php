@@ -13,6 +13,9 @@ $pontoDeReferencia = isset($_POST['pontoDeReferencia'])?$_POST['pontoDeReferenci
 $now = new DateTime();
 $dataCadastro = $now->format('Y-m-d H:i:s'); 
 
+//$nome_completo = strtoupper($nome_completo);
+//$rua = strtoupper($)
+
 //removendo a marcara do cep
 $cep = str_replace("-", "", $cep);
 
@@ -41,7 +44,7 @@ require_once 'conexao.php';
 
 try{
     //realizando o insert no banco
-    $stmt = $conn->prepare("INSERT usuarios (nome_completo, whatsapp, rua, numeroCasa, pontoDeReferencia, bairro, cidade, cep, telefone1, telefone2, dataCadastro) 
+    $stmt = $conn->prepare("INSERT clientes (nome_completo, whatsapp, rua, numeroCasa, pontoDeReferencia, bairro, cidade, cep, telefone1, telefone2, dataCadastro) 
     VALUES (:nome_completo, :whatsapp, :rua, :numeroCasa, :pontoDeReferencia, :bairro, :cidade, :cep, :telefone1, :telefone2, :dataCadastro)"
     );
     //limpando variaveis de sql injection 
@@ -60,7 +63,7 @@ try{
     $stmt->execute();
     
     //nova consulta para pegar o id do usuario que já foi inserido acima
-    $stmt = $conn->prepare("SELECT id FROM usuarios WHERE whatsapp = '$whatsapp'"); 
+    $stmt = $conn->prepare("SELECT id FROM clientes WHERE whatsapp = '$whatsapp'"); 
     $stmt->execute();
     $resultado = $stmt->fetch();
 
