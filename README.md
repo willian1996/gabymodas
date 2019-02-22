@@ -1,1 +1,1 @@
-Sistema Web de cadastro de cliente 
+Sistema Web de cadastro de clientes
