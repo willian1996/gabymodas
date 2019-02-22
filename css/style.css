@@ -83,8 +83,12 @@
     
 }
 #loginUsuario{
-    padding: 15px;
+    padding: 10px;
     
+}
+.botaoLogout{
+    float:right;
+    margin-right: 10px;
 }
 #urlColado{
     text-decoration: underline;

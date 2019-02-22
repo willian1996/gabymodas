@@ -7,6 +7,8 @@ if(!isset($_SESSION['id_admin'])){
 require_once 'header.php';
 require_once 'server/conexao.php';
 ?>
+<div class="botaoLogout"><a href="server/logout.php"class="btn-floating black modal-trigger"><i class="material-icons" >cancel</i></a></div>
+
 
 <div id="listagemClientes">
     <div class="col s12 m6 push-m3">
@@ -41,22 +43,23 @@ require_once 'server/conexao.php';
                     <td><a href="info-cliente.php?id=<?php echo $valor['id']; ?>" class="btn-floating orange"><i class="material-icons">folder_shared</i></a></td>
                     
                     <td><a href="#modal<?php echo $valor['id']; ?>" class="btn-floating red modal-trigger"><i class="material-icons" >delete</i></a></td>
+
                     
                     <!-- Modal Structure -->
                       <div id="modal<?php echo $valor['id']; ?>" class="modal">
                         <div class="modal-content">
                           <h4>Opa!</h4>
-                          <p>tem certeza que deseja excluir esse parâmetros?</p>
+                          <p>tem certeza que deseja excluir este cliente?</p>
                         </div>
                         <div class="modal-footer">
         
-                            <form action="php_action/delete.php" method="post">
-                                <input type="hidden" name="id" value="<?php echo $valor['id']; ?>">
-                                <button type="submit" name="btn-deletar" class="btn red">Sim, quero deletar</button>
+                        
+                               
+                                <button name="btn-deletar" onclick="excluirCliente(<?php echo $valor['id']; ?>)" class="btn red">Sim, quero deletar</button>
                                 
                                 <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cancelar</a>
                                         
-                            </form>
+                            
                         </div>
                       </div>
                     

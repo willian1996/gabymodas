@@ -27,6 +27,23 @@ function login(){
         }
     });
 }
+//excluir cliente por ajax 
+function excluirCliente(id){
+			$.ajax({
+                  url: "server/excluir-cliente.php",
+				  method: "POST",
+                  dataType: "json", //tipo de retorno.
+                  data: {"id":id},
+                  success: function(retorno){
+                      if(retorno.deucerto){
+                        alert(retorno.mensagem);
+                          window.location.reload();
+                      }else{
+                        alert(retorno.mensagem); 
+                      }
+                  }
+              });
+}
 
 
 
