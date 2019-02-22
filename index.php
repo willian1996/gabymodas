@@ -13,6 +13,20 @@ require_once 'server/conexao.php';
 <div id="listagemClientes">
     <div class="col s12 m6 push-m3">
         <h3 class="light">Clientes Cadastrados</h3>
+        
+        <!--filtro-->
+        <form method="get" action="">
+        Filtrar por whatsapp: <input type="text" name="filtro"  required/>
+        <input  class="btn" type="submit" value="Pesquisar"/>
+        </form>
+        
+        
+        
+        
+        
+        
+        
+        
         <table class="striped">
             <thead>
                 <tr>
@@ -24,8 +38,11 @@ require_once 'server/conexao.php';
             </thead>
             <tbody>
                 <?php
+                $filtro = isset($_GET['filtro'])?$_GET['filtro']:"";
+                
+                
                 try{
-                    $stmt = $conn->prepare("SELECT * FROM clientes order by dataCadastro DESC"); 
+                    $stmt = $conn->prepare("SELECT * FROM clientes where whatsapp like '%$filtro%' order by dataCadastro DESC"); 
                     $stmt->execute();
                     $resultado = $stmt->fetchAll(); 
                 }catch(PDOException $e){
@@ -70,52 +87,13 @@ require_once 'server/conexao.php';
             </tbody>
         </table>
         <br/>
-        <a href="cadastro.php" class="btn">Adicionar Cliente</a>
+        
     </div>
 
 
 
 
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <?php
 require_once 'footer.php';
