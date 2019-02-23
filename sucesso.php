@@ -1,5 +1,7 @@
 <?php
-    require_once 'header.php'; 
+require_once 'header.php'; 
+$id = $_GET['id'];
+$whatsapp = $_GET['whatsapp'];
 ?>
 <div id="sessaoSucesso">
     <div class="col s12 m12 l6">
@@ -7,8 +9,7 @@
           <h5 class="header2">Confira seus dados</h5>
             <div id="dadosCliente" class="row">
                 <?php
-                $id = $_GET['id'];
-                $whatsapp = $_GET['whatsapp'];
+                
                 require 'server/conexao.php';
                 try{
                     $stmt = $conn->prepare("SELECT * FROM clientes WHERE (id = '$id') and (whatsapp = '$whatsapp')"); 

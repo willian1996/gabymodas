@@ -95,11 +95,41 @@
     margin-bottom: 20px;
 }
 
-
-
-
-
-
+.campoPesquisa{
+    width: 200px !important;
+    height: 25px !important;
+    border: 1px solid #ccc !important;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+.botaoPesquisa{
+    width: 100px;
+    height: 29px ;
+    border: 1px solid #ddd;
+    background-color: #2a578b;
+    color: #fff;
+    cursor: pointer;
+}
+.estatistica{
+    width: 200px;
+    height: 200px;
+    background-color: #ccc;
+    float: left;
+    margin-left: 10px;
+}
+.select{
+    display: block !important;
+    width: 100px;
+    height: 29px;
+    float: left !important;
+    margin: 0 10px;
+}
+.textoPesquisa{
+    float: left;
+    font-size: 17px;
+    margin-left: 6px;
+   
+}
 
 
 

@@ -8,6 +8,7 @@ require_once 'header.php';
 require_once 'server/conexao.php';
 ?>
 <div class="botaoLogout"><a href="server/logout.php"class="btn-floating black modal-trigger"><i class="material-icons" >cancel</i></a></div>
+<div class="estatistica"></div>
 
 
 <div id="listagemClientes">
@@ -16,8 +17,18 @@ require_once 'server/conexao.php';
         
         <!--filtro-->
         <form method="get" action="">
-        Filtrar por whatsapp: <input type="text" name="filtro"  required/>
-        <input  class="btn" type="submit" value="Pesquisar"/>
+            <strong class="textoPesquisa">Pesquisar por</strong>
+            
+                
+                    <select name="opcao" class="select">
+                        <option value="whatsapp" selected>Whatsapp</option>
+                        <option value="nome_completo">Nome</option>
+                    </select>
+
+                    <input  class="campoPesquisa" type="text" name="filtro"  required/>
+            
+        <input class="botaoPesquisa"  type="submit" value="Pesquisar"/>
+           
         </form>
         
         
@@ -38,11 +49,13 @@ require_once 'server/conexao.php';
             </thead>
             <tbody>
                 <?php
+                $opcao =isset($_GET['opcao'])?$_GET['opcao']:"whatsapp";
                 $filtro = isset($_GET['filtro'])?$_GET['filtro']:"";
                 
                 
+                
                 try{
-                    $stmt = $conn->prepare("SELECT * FROM clientes where whatsapp like '%$filtro%' order by dataCadastro DESC"); 
+                    $stmt = $conn->prepare("SELECT * FROM clientes where $opcao like '%$filtro%' order by dataCadastro DESC"); 
                     $stmt->execute();
                     $resultado = $stmt->fetchAll(); 
                 }catch(PDOException $e){

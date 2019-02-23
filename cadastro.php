@@ -56,7 +56,12 @@
                 <div class="row">
                     <div class="input-field col s12">
                         <i class="small material-icons">location_city</i>
-                        <input placeholder="Cidade*" name="cidade"  type="text" required>
+                        <select name="cidade">
+                            <option value="Caraguatatuba">Caraguatatuba</option>
+                            <option value="Sao Sebastiao">São Sebastião</option>
+                            <option value="Ubatuba">Ubatuba</option>
+                            <option value="Ilha Bela">Ilha Bela</option>
+                        </select>
                     </div>
                 </div>
                 <!--CEP-->
