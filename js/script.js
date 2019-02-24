@@ -47,6 +47,7 @@ function login(){
         }
     });
 }
+
 //excluir cliente por ajax 
 function excluirCliente(id){
     $.ajax({
@@ -64,6 +65,18 @@ function excluirCliente(id){
           }
       });
 }
+
+//script imprimir em pdf
+function printData(){
+   var divToPrint=document.getElementById("infoCliente");
+   newWin= window.open("");
+   newWin.document.write(divToPrint.outerHTML);
+   newWin.print();
+   newWin.close();
+}
+$('#imprimir').on('click',function(){
+printData();
+})
 
 
 

@@ -15,6 +15,6 @@
     <!-----------Menu---------------->
     <header>
         <nav id="menu">
-            <div class="logo-gaby-modas">GABY MODAS</div>
+            <div class="logo-gaby-modas"><a href="index.php">GABY MODAS</a></div>
         </nav>
     </header>

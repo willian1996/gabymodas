@@ -13,8 +13,17 @@ $pontoDeReferencia = isset($_POST['pontoDeReferencia'])?$_POST['pontoDeReferenci
 $now = new DateTime();
 $dataCadastro = $now->format('Y-m-d H:i:s'); 
 
-//$nome_completo = strtoupper($nome_completo);
-//$rua = strtoupper($)
+//limpando variaveis 
+$nome_completo = addslashes($nome_completo);
+$whatsapp = addslashes($whatsapp);
+$rua = addslashes($rua);
+$numeroCasa = addslashes($numeroCasa);
+$bairro = addslashes($bairro);
+$cidade = addslashes($cidade);
+$cep = addslashes($cep);
+$telefone1 = addslashes($telefone1);
+$telefone2 = addslashes($telefone2);
+$pontoDeReferencia = addslashes($pontoDeReferencia);
 
 //removendo a marcara do cep
 $cep = str_replace("-", "", $cep);
@@ -43,6 +52,16 @@ $telefone2= str_replace("-", "", $telefone2);
 require_once 'conexao.php';
 
 try{
+    $stmt = $conn->prepare("select * from clientes where whatsapp = :whatsapp");
+    $stmt->bindParam(':whatsapp', $whatsapp);
+    $stmt->execute();
+    $linha = $stmt->rowCount(); 
+}catch(PDOException $e){
+    echo $e->getMessage();
+}
+
+if($linha == 0){
+    try{
     //realizando o insert no banco
     $stmt = $conn->prepare("INSERT clientes (nome_completo, whatsapp, rua, numeroCasa, pontoDeReferencia, bairro, cidade, cep, telefone1, telefone2, dataCadastro) 
     VALUES (:nome_completo, :whatsapp, :rua, :numeroCasa, :pontoDeReferencia, :bairro, :cidade, :cep, :telefone1, :telefone2, :dataCadastro)"
@@ -75,8 +94,15 @@ try{
     
 }catch(PDOException $e){
 //    header('location: ../erro.php');
-    echo "Erro: ".$e;
+    header("Location: ../erro.php?error=$e");
 }
+    
+}else{
+    header("Location: ../usuariojacadastrado.php?whatsapp=$whatsapp");
+    
+    
+}
+
 
 
 

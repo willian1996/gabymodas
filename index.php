@@ -8,7 +8,68 @@ require_once 'header.php';
 require_once 'server/conexao.php';
 ?>
 <div class="botaoLogout"><a href="server/logout.php"class="btn-floating black modal-trigger"><i class="material-icons" >cancel</i></a></div>
-<div class="estatistica"></div>
+<div class="estatistica">
+    
+    <?php
+    //caraguatatuba
+    try{
+        $stmt = $conn->prepare("select count(*) from clientes where cidade = 'Caraguatatuba';"); 
+        $stmt->execute();
+        $caraguatatuba = $stmt->fetch(); 
+    }catch(PDOException $e){
+        echo $e->getMessage();
+    }
+    //são sebastião
+    try{
+        $stmt = $conn->prepare("select count(*) from clientes where cidade = 'Sao Sebastiao';"); 
+        $stmt->execute();
+        $saoSebastiao = $stmt->fetch(); 
+    }catch(PDOException $e){
+        echo $e->getMessage();
+    }
+    //ilha bela 
+    try{
+        $stmt = $conn->prepare("select count(*) from clientes where cidade = 'Ilha Bela';"); 
+        $stmt->execute();
+        $ilhaBela = $stmt->fetch(); 
+    }catch(PDOException $e){
+        echo $e->getMessage();
+    }
+    //ubatuba
+    try{
+        $stmt = $conn->prepare("select count(*) from clientes where cidade = 'Ubatuba';"); 
+        $stmt->execute();
+        $ubatuba = $stmt->fetch(); 
+    }catch(PDOException $e){
+        echo $e->getMessage();
+    }
+    //total
+     try{
+        $stmt = $conn->prepare("select count(*) from clientes;"); 
+        $stmt->execute();
+        $total = $stmt->fetch(); 
+    }catch(PDOException $e){
+        echo $e->getMessage();
+    }
+    
+    
+    ?>
+    
+    
+    
+    
+    <h5>Estatísticas</h5>
+    <p>Caraguatatuba: <?php echo $caraguatatuba[0]; ?></p>
+    <p>São Sebastião: <?php echo $saoSebastiao[0]; ?></p>
+    <p>Ilha Bela: <?php echo $ilhaBela[0]; ?></p>
+    <p>Ubatuba: <?php echo $ubatuba[0]; ?></p>
+    <p><b>Total: <?php echo $total[0]; ?></b></p>
+    
+
+
+
+
+</div>
 
 
 <div id="listagemClientes">
@@ -53,6 +114,7 @@ require_once 'server/conexao.php';
                 $filtro = isset($_GET['filtro'])?$_GET['filtro']:"";
                 
                 
+                $filtro = addslashes($filtro);
                 
                 try{
                     $stmt = $conn->prepare("SELECT * FROM clientes where $opcao like '%$filtro%' order by dataCadastro DESC"); 

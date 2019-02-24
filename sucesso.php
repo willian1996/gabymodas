@@ -36,6 +36,8 @@ $whatsapp = $_GET['whatsapp'];
                 }
                 ?>
             </div>
+            <h5>Envie o link abaixo para o whatsapp (12)98181-9956</h5>
+            <br>
             <div id="urlColado"></div>
             
             <div class="row">
