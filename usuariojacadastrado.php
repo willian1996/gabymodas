@@ -13,22 +13,6 @@ $whatsapp =  isset($_GET['whatsapp'])?$_GET['whatsapp']:'';
 
 
 
-
-
-
-
-
-
-
-
-
-
-    
-    
-    
-    
-    
-    
     
 
 
