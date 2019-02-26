@@ -5,7 +5,7 @@ let linkUrl = "http://localhost/gabymodas";
 $(document).ready(function(){
     $(".telefone").mask("(00) 00000-0000");
     $(".cep").mask("00000-000");
-    $('#urlColado').html(document.URL);
+    $('#urlColado').val(document.URL);
     $('.modal').modal();
     $('#modal1').modal('open');
     $('#modal1').modal('close');
@@ -77,6 +77,13 @@ function printData(){
 $('#imprimir').on('click',function(){
 printData();
 })
+
+function copiarURL() {
+  var copyText = document.getElementById("urlColado");
+  copyText.select();
+  document.execCommand("copy");
+  alert("Link copiado!");
+}
 
 
 

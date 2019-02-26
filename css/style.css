@@ -91,9 +91,15 @@
     margin-right: 10px;
 }
 #urlColado{
-    text-decoration: underline;
+    
     margin-bottom: 20px;
 }
+#sessaoSucesso .paragrafoCopiarLink{
+    color: red;
+}
+
+
+
 
 .campoPesquisa{
     width: 200px !important;

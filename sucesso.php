@@ -6,7 +6,7 @@ $whatsapp = $_GET['whatsapp'];
 <div id="sessaoSucesso">
     <div class="col s12 m12 l6">
         <div class="card-panel">
-          <h5 class="header2">Confira seus dados</h5>
+          <h5 class="header2">Cadastro Finalizado!</h5>
             <div id="dadosCliente" class="row">
                 <?php
                 
@@ -36,13 +36,16 @@ $whatsapp = $_GET['whatsapp'];
                 }
                 ?>
             </div>
-            <h5>Envie o link abaixo para o whatsapp (12)98181-9956</h5>
+            <p class="paragrafoCopiarLink">Agora clique no botão "COPIAR LINK" e envie o link do seu cadastro para o whatsapp (12)98181-9956 para identificarmos o seu cadastro</p>
             <br>
-            <div id="urlColado"></div>
+
+            
+            <input type="text" id="urlColado">
+            
             
             <div class="row">
                 <div class="input-field col s12">
-                    <button class="btn cyan waves-effect waves-light center" type="button">Copiar Link
+                    <button class="btn cyan waves-effect waves-light center"  onclick="copiarURL()" type="button">Copiar Link
                     </button>
                 </div>
             </div>
