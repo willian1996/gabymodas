@@ -1,5 +1,9 @@
 <?php
-    require_once 'header.php'; 
+session_start();
+if(!isset($_SESSION['id_admin'])){
+    header("Location: login-admin.php");
+}
+require_once 'header.php'; 
 ?>
 <div id="infoCliente">
     <div class="col s12 m12 l6">

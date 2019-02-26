@@ -77,7 +77,7 @@ function printData(){
 $('#imprimir').on('click',function(){
 printData();
 })
-
+//copiar o link do cadastro do cliente 
 function copiarURL() {
   var copyText = document.getElementById("urlColado");
   copyText.select();
