@@ -1,4 +1,7 @@
 <?php
+//configurando timezone
+date_default_timezone_set('America/Sao_Paulo');
+
 //recebendo os dados do formulario com método POST[]
 $nome_completo = isset($_POST['nome_completo'])?$_POST['nome_completo']:'';
 $whatsapp = isset($_POST['whatsapp'])?$_POST['whatsapp']:'';
