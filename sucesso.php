@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once 'header.php'; 
 $id = $_GET['id'];
 $whatsapp = $_GET['whatsapp'];
@@ -47,6 +48,16 @@ $whatsapp = $_GET['whatsapp'];
                 <div class="input-field col s12">
                     <button class="btn cyan waves-effect waves-light center"  onclick="copiarURL()" type="button">Copiar Link
                     </button>
+                    <?php
+                    if(isset($_SESSION['id_admin'])){
+                    ?>
+                        <a href="info-cliente.php?id=<?php echo $valor['id']; ?>" class="btn-floating orange"><i class="material-icons">folder_shared</i></a>
+                    <?php
+                    }
+                    
+                        
+                        
+                    ?>
                 </div>
             </div>
         </div>

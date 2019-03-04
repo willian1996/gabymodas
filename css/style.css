@@ -28,8 +28,14 @@
         margin: 0 auto !important;
         width: 95%;
         min-height: 400px;
-        
     }
+    
+}
+@media only screen and (max-width: 800px) {
+    .estatistica{
+        display: none;
+    }
+    
 }
 @media only screen and (min-width: 481px) {
     #formaulario-de-contato{
