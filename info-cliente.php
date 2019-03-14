@@ -14,7 +14,6 @@ require_once 'header.php';
             <div id="dadosCliente" class="row">
                 <?php
                 $id = $_GET['id'];
-
                 require 'server/conexao.php';
                 try{
                     $stmt = $conn->prepare("SELECT * FROM clientes WHERE (id = '$id')"); 
@@ -25,7 +24,6 @@ require_once 'header.php';
                 }
                 foreach($resultado as $valor){
                 ?> 
-                
                 <p><b>NOME:</b><br> <?php echo strtoupper($valor['nome_completo']); ?></p>
                 <p><b>WHATSAPP:</b><br> <strong class="telefone"> <?php echo $valor['whatsapp'];   ?></strong></p>
                 <p>==============================</p>
@@ -52,8 +50,6 @@ require_once 'header.php';
         </div>
     </div>
 </div>
-
 <?php
 require_once 'footer.php';
-
 ?>

@@ -3,102 +3,32 @@ session_start();
 if(!isset($_SESSION['id_admin'])){
     header("Location: login-admin.php");
 }
-
 require_once 'header.php';
 require_once 'server/conexao.php';
+require_once 'server/estatistica.php';
 ?>
 <div class="botaoLogout"><a href="server/logout.php"class="btn-floating black modal-trigger"><i class="material-icons" >cancel</i></a></div>
 <div class="estatistica">
-    
-    <?php
-    //caraguatatuba
-    try{
-        $stmt = $conn->prepare("select count(*) from clientes where cidade = 'Caraguatatuba';"); 
-        $stmt->execute();
-        $caraguatatuba = $stmt->fetch(); 
-    }catch(PDOException $e){
-        echo $e->getMessage();
-    }
-    //são sebastião
-    try{
-        $stmt = $conn->prepare("select count(*) from clientes where cidade = 'Sao Sebastiao';"); 
-        $stmt->execute();
-        $saoSebastiao = $stmt->fetch(); 
-    }catch(PDOException $e){
-        echo $e->getMessage();
-    }
-    //ilha bela 
-    try{
-        $stmt = $conn->prepare("select count(*) from clientes where cidade = 'Ilha Bela';"); 
-        $stmt->execute();
-        $ilhaBela = $stmt->fetch(); 
-    }catch(PDOException $e){
-        echo $e->getMessage();
-    }
-    //ubatuba
-    try{
-        $stmt = $conn->prepare("select count(*) from clientes where cidade = 'Ubatuba';"); 
-        $stmt->execute();
-        $ubatuba = $stmt->fetch(); 
-    }catch(PDOException $e){
-        echo $e->getMessage();
-    }
-    //total
-     try{
-        $stmt = $conn->prepare("select count(*) from clientes;"); 
-        $stmt->execute();
-        $total = $stmt->fetch(); 
-    }catch(PDOException $e){
-        echo $e->getMessage();
-    }
-    
-    
-    ?>
-    
-    
-    
-    
     <h5>Estatísticas</h5>
-    <p>Caraguatatuba: <?php echo $caraguatatuba[0]; ?></p>
-    <p>São Sebastião: <?php echo $saoSebastiao[0]; ?></p>
-    <p>Ilha Bela: <?php echo $ilhaBela[0]; ?></p>
-    <p>Ubatuba: <?php echo $ubatuba[0]; ?></p>
-    <p><b>Total: <?php echo $total[0]; ?></b></p>
-    
-
-
-
-
+    <p>Caraguatatuba: <?php echo caraguatatuba($conn); ?></p>
+    <p>São Sebastião: <?php echo saoSebastiao($conn); ?></p>
+    <p>Ilha Bela: <?php echo ilhaBela($conn); ?></p>
+    <p>Ubatuba: <?php echo ubatuba($conn); ?></p>
+    <p><b>Total: <?php echo total($conn); ?></b></p>
 </div>
-
-
 <div id="listagemClientes">
     <div class="col s12 m6 push-m3">
         <h3 class="light">Clientes Cadastrados</h3>
-        
-        <!--filtro-->
+        <!--filtro pesquisar cliente-->
         <form method="get" action="">
             <strong class="textoPesquisa">Pesquisar por</strong>
-            
-                
-                    <select name="opcao" class="select">
-                        <option value="whatsapp" selected>Whatsapp</option>
-                        <option value="nome_completo">Nome</option>
-                    </select>
-
-                    <input  class="campoPesquisa" type="text" name="filtro"  required/>
-            
-        <input class="botaoPesquisa"  type="submit" value="Pesquisar"/>
-           
+                <select name="opcao" class="select">
+                    <option value="whatsapp" selected>Whatsapp</option>
+                    <option value="nome_completo">Nome</option>
+                </select>
+                <input  class="campoPesquisa" type="text" name="filtro"  required/>
+            <input class="botaoPesquisa"  type="submit" value="Pesquisar"/>
         </form>
-        
-        
-        
-        
-        
-        
-        
-        
         <table class="striped">
             <thead>
                 <tr>
@@ -112,10 +42,7 @@ require_once 'server/conexao.php';
                 <?php
                 $opcao =isset($_GET['opcao'])?$_GET['opcao']:"whatsapp";
                 $filtro = isset($_GET['filtro'])?$_GET['filtro']:"";
-                
-                
                 $filtro = addslashes($filtro);
-                
                 try{
                     $stmt = $conn->prepare("SELECT * FROM clientes where $opcao like '%$filtro%' order by dataCadastro DESC"); 
                     $stmt->execute();
@@ -124,8 +51,6 @@ require_once 'server/conexao.php';
                     echo $e->getMessage();
                 }
                 foreach($resultado as $valor){
-
-
                 ?>
                 <tr>
                     <td><?php echo date('d/m/Y H:i',strtotime($valor['dataCadastro'])); ?></td>
@@ -133,28 +58,18 @@ require_once 'server/conexao.php';
                     <td><?php echo $valor['cidade']; ?></td>
                     <td><strong class="telefone"><?php echo $valor['whatsapp']; ?></strong></td>
                     <td><a href="info-cliente.php?id=<?php echo $valor['id']; ?>" class="btn-floating orange"><i class="material-icons">folder_shared</i></a></td>
-                    
                     <td><a href="#modal<?php echo $valor['id']; ?>" class="btn-floating red modal-trigger"><i class="material-icons" >delete</i></a></td>
-
-                    
                     <!-- Modal Structure -->
                       <div id="modal<?php echo $valor['id']; ?>" class="modal">
                         <div class="modal-content">
                           <h4>Opa!</h4>
                           <p>tem certeza que deseja excluir este cliente?</p>
                         </div>
-                        <div class="modal-footer">
-        
-                        
-                               
-                                <button name="btn-deletar" onclick="excluirCliente(<?php echo $valor['id']; ?>)" class="btn red">Sim, quero deletar</button>
-                                
-                                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cancelar</a>
-                                        
-                            
+                        <div class="modal-footer"> 
+                            <button name="btn-deletar" onclick="excluirCliente(<?php echo $valor['id']; ?>)" class="btn red">Sim, quero deletar</button>
+                            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cancelar</a> 
                         </div>
                       </div>
-                    
                 </tr>
                 <?php 
                 }
@@ -162,14 +77,8 @@ require_once 'server/conexao.php';
             </tbody>
         </table>
         <br/>
-        
     </div>
-
-
-
-
 </div>
-
 <?php
 require_once 'footer.php';
 ?>

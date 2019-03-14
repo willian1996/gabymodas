@@ -10,7 +10,6 @@ $whatsapp = $_GET['whatsapp'];
           <h5 class="header2">Cadastro Finalizado!</h5>
             <div id="dadosCliente" class="row">
                 <?php
-                
                 require 'server/conexao.php';
                 try{
                     $stmt = $conn->prepare("SELECT * FROM clientes WHERE (id = '$id') and (whatsapp = '$whatsapp')"); 
@@ -21,8 +20,6 @@ $whatsapp = $_GET['whatsapp'];
                 }
                 foreach($resultado as $valor){
                 ?> 
-                
-                
                 <p>Nome: <?php echo $valor['nome_completo']; ?></p>
                 <p>Whatsapp: <strong class="telefone"><?php echo $valor['whatsapp'];   ?></strong></p>
                 <p>Rua: <?php echo $valor['rua'];   ?></p>
@@ -37,13 +34,9 @@ $whatsapp = $_GET['whatsapp'];
                 }
                 ?>
             </div>
-            <p class="paragrafoCopiarLink">Agora clique no botão "COPIAR LINK" e envie o link do seu cadastro para o whatsapp (12)98181-9956 para identificarmos o seu cadastro</p>
+            <h5>ATENÇÃO! click no botão azul para copiar o link, abra o meu whatsapp (12)98181-9956 e cole o link para identificarmos seu cadastro.</h5>
             <br>
-
-            
             <input type="text" id="urlColado">
-            
-            
             <div class="row">
                 <div class="input-field col s12">
                     <button class="btn cyan waves-effect waves-light center"  onclick="copiarURL()" type="button">Copiar Link
@@ -54,17 +47,12 @@ $whatsapp = $_GET['whatsapp'];
                         <a href="info-cliente.php?id=<?php echo $valor['id']; ?>" class="btn-floating orange"><i class="material-icons">folder_shared</i></a>
                     <?php
                     }
-                    
-                        
-                        
                     ?>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 <?php
 require_once 'footer.php';
-
 ?>

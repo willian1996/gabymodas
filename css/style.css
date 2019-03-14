@@ -1,3 +1,4 @@
+/*MENU*/
 #menu{
     background-color: #F60C89; 
     height: 80px;
@@ -7,11 +8,14 @@
     padding-top: 10px;
     text-align: center;
     font-size: 30px;
-    font-weight: 800;  
-    
+    font-weight: 800; 
 }
 @media only screen and (max-width: 480px) {
-    #formaulario-de-contato{
+    #formulario-de-contato{
+        margin: 0 auto !important;
+        width: 95%;
+    }
+    #formulario-de-editar{
         margin: 0 auto !important;
         width: 95%;
     }
@@ -29,16 +33,18 @@
         width: 95%;
         min-height: 400px;
     }
-    
 }
 @media only screen and (max-width: 800px) {
     .estatistica{
         display: none;
     }
-    
 }
 @media only screen and (min-width: 481px) {
-    #formaulario-de-contato{
+    #formulario-de-contato{
+        margin: 0 auto !important;
+        width: 60%;
+    }
+    #formulario-de-editar{
         margin: 0 auto !important;
         width: 60%;
     }
@@ -55,17 +61,13 @@
         margin: 0 auto !important;
         width: 300px;
         min-height: 400px;
-       
     }
-    
 }
 #listagemClientes{
     margin: 0 auto !important;;
     width: 60%;
     min-height: 400px;
 }
-
-
 .header2{
     text-align: center;
 }
@@ -75,8 +77,6 @@
 .containerLogin{
     min-height: 400px;
 }
-
-
 #modal-login {
     max-width: 400px;
     width: 90%;
@@ -86,27 +86,17 @@
     border: 2px solid #000000;
     margin: 0 auto !important;
     margin-top: 100px !important;
-    
 }
 #loginUsuario{
     padding: 10px;
-    
 }
 .botaoLogout{
     float:right;
     margin-right: 10px;
 }
 #urlColado{
-    
     margin-bottom: 20px;
 }
-#sessaoSucesso .paragrafoCopiarLink{
-    color: red;
-}
-
-
-
-
 .campoPesquisa{
     width: 200px !important;
     height: 25px !important;
@@ -142,17 +132,6 @@
     min-height: 400px;
     text-align: center;
 }
-/*
-.usuariojacadastrado h3{
-    text-align: center;
-}
-*/
-
-
-
-
-
-
 .select{
     display: block !important;
     width: 100px;
@@ -164,12 +143,7 @@
     float: left;
     font-size: 17px;
     margin-left: 6px;
-   
 }
-
-
-
-
 #page-footer{
     margin-top: 30px;
     padding: 10px;
@@ -179,4 +153,3 @@
     background-color: #FFFFFF;
     text-align: center;
 }
-

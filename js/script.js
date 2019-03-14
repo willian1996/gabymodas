@@ -1,6 +1,5 @@
 //index private url
-let linkUrl = "http://localhost/gabymodas";
-
+const linkUrl = "http://localhost/gabymodas";
 //jquery
 $(document).ready(function(){
     $(".telefone").mask("(00) 00000-0000");
@@ -20,14 +19,10 @@ $(document).ready(function(){
         console.log(modal, trigger);
       },
       complete: function(){ 
-          
       } // Callback for Modal close
     }
   );
-    
-    
 });
-
 //login do administrador por ajax
 function login(){
     var email = $('#login_email').val();
@@ -47,7 +42,6 @@ function login(){
         }
     });
 }
-
 //excluir cliente por ajax 
 function excluirCliente(id){
     $.ajax({
@@ -65,7 +59,6 @@ function excluirCliente(id){
           }
       });
 }
-
 //script imprimir em pdf
 function printData(){
    var divToPrint=document.getElementById("infoCliente");
@@ -79,39 +72,9 @@ printData();
 })
 //copiar o link do cadastro do cliente 
 function copiarURL() {
-  var copyText = document.getElementById("urlColado");
-  copyText.select();
-  document.execCommand("copy");
-  alert("Link copiado!");
+    var copyText = document.getElementById("urlColado");
+    copyText.select();
+    document.execCommand("copy");
+    alert("Link copiado! agora cole no whatsapp");
+    window.location.assign('https://api.whatsapp.com/send?phone=55123456789');
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-
-        
-
-
-        
-
-
-
-
-
-
-        
-
-
-
