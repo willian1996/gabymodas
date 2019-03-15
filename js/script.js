@@ -1,5 +1,5 @@
 //index private url
-const linkUrl = "http://localhost/gabymodas";
+const linkUrl = "http://localhost/gabymodas/";
 //jquery
 $(document).ready(function(){
     $(".telefone").mask("(00) 00000-0000");
@@ -76,5 +76,5 @@ function copiarURL() {
     copyText.select();
     document.execCommand("copy");
     alert("Link copiado! agora cole no whatsapp");
-    window.location.assign('https://api.whatsapp.com/send?phone=55123456789');
+    window.location.assign('https://api.whatsapp.com/send?phone=5512981819956');
 }
