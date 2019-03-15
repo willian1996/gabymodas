@@ -45,6 +45,7 @@ $whatsapp = $_GET['whatsapp'];
                     if(isset($_SESSION['id_admin'])){
                     ?>
                         <a href="info-cliente.php?id=<?php echo $valor['id']; ?>" class="btn-floating orange"><i class="material-icons">folder_shared</i></a>
+                        <a href="editar.php?id=<?php echo $valor['id']; ?>" class="btn-floating orange"><i class="material-icons">edit</i></a>
                     <?php
                     }
                     ?>
