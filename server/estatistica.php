@@ -1,5 +1,5 @@
 <?php
-//caraguatatuba
+//Estatistica de caraguatatuba
 function caraguatatuba($conn){
     try{
         $stmt = $conn->prepare("select count(*) from clientes where cidade = 'Caraguatatuba';"); 
@@ -10,7 +10,7 @@ function caraguatatuba($conn){
         return $e->getMessage();
     }   
 }
-//são sebastião
+//Estatistica de são sebastião
 function saoSebastiao($conn){
     try{
         $stmt = $conn->prepare("select count(*) from clientes where cidade = 'Sao Sebastiao';"); 
@@ -21,7 +21,7 @@ function saoSebastiao($conn){
         return $e->getMessage();
     }
 }
-//ilha bela 
+//Estatistica de ilha bela 
 function ilhaBela($conn){
     try{
         $stmt = $conn->prepare("select count(*) from clientes where cidade = 'Ilha Bela';"); 
@@ -32,7 +32,7 @@ function ilhaBela($conn){
         return $e->getMessage();
     }
 }
-//ubatuba
+//Estatistica de ubatuba
 function ubatuba($conn){
     try{
         $stmt = $conn->prepare("select count(*) from clientes where cidade = 'Ubatuba';"); 
@@ -43,7 +43,7 @@ function ubatuba($conn){
         return $e->getMessage();
     }
 }
-//total
+//Estatistica no total
 function total($conn){
      try{
         $stmt = $conn->prepare("select count(*) from clientes;"); 
@@ -54,4 +54,5 @@ function total($conn){
         return $e->getMessage();
     }
 }
+
 ?>
