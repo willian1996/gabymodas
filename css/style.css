@@ -10,6 +10,7 @@
     font-size: 30px;
     font-weight: 800; 
 }
+
 @media only screen and (max-width: 480px) {
     #formulario-de-contato{
         margin: 0 auto !important;
@@ -32,6 +33,9 @@
         margin: 0 auto !important;
         width: 95%;
         min-height: 400px;
+    }
+    .hidden-mobile{
+        display: none;
     }
 }
 @media only screen and (max-width: 800px) {

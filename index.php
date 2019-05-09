@@ -17,7 +17,7 @@ require_once 'server/estatistica.php';
     <p><b>Total: <?php echo total($conn); ?></b></p>
 </div>
 <div id="listagemClientes">
-    <div class="col s12 m6 push-m3">
+    <div class="col s12 m12 push-m3">
         <h3 class="light">Clientes Cadastrados</h3>
         <!--filtro pesquisar cliente-->
         <form method="get" action="">
@@ -32,10 +32,11 @@ require_once 'server/estatistica.php';
         <table class="striped">
             <thead>
                 <tr>
-                    <th>Data de cadastro: </th>
+                    <th class="hidden-mobile">Data de cadastro: </th>
                     <th>Nome completo:</th>
-                    <th>Cidade: </th>
+                    <th class="hidden-mobile">Cidade: </th>
                     <th>Whatsapp:</th>
+                    <th>Ações:</th>
                 </tr>
             </thead>
             <tbody>
@@ -53,11 +54,10 @@ require_once 'server/estatistica.php';
                 foreach($resultado as $valor){
                 ?>
                 <tr>
-                    <td><?php echo date('d/m/Y H:i',strtotime($valor['dataCadastro'])); ?></td>
-                    <td><?php echo $valor['nome_completo']; ?></td>
-                    <td><?php echo $valor['cidade']; ?></td>
+                    <td class="hidden-mobile"><?php echo date('d/m/Y H:i',strtotime($valor['dataCadastro'])); ?></td>
+                    <td><a href="info-cliente.php?id=<?php echo $valor['id']; ?>"><?php echo $valor['nome_completo']; ?></a></td>
+                    <td class="hidden-mobile"><?php echo $valor['cidade']; ?></td>
                     <td><strong class="telefone"><?php echo $valor['whatsapp']; ?></strong></td>
-                    <td><a href="info-cliente.php?id=<?php echo $valor['id']; ?>" class="btn-floating orange"><i class="material-icons">folder_shared</i></a></td>
                     <td><a href="#modal<?php echo $valor['id']; ?>" class="btn-floating red modal-trigger"><i class="material-icons" >delete</i></a></td>
                     <!-- Modal Structure -->
                       <div id="modal<?php echo $valor['id']; ?>" class="modal">
