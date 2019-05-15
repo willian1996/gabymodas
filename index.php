@@ -36,7 +36,7 @@ require_once 'server/estatistica.php';
                     <th>Nome completo:</th>
                     <th class="hidden-mobile">Cidade: </th>
                     <th>Whatsapp:</th>
-                    <th>Ações:</th>
+                    <th class="hidden-mobile">Ações:</th>
                 </tr>
             </thead>
             <tbody>
@@ -51,14 +51,14 @@ require_once 'server/estatistica.php';
                 }catch(PDOException $e){
                     echo $e->getMessage();
                 }
-                foreach($resultado as $valor){
+                foreach($resultado as $valor):
                 ?>
                 <tr>
                     <td class="hidden-mobile"><?php echo date('d/m/Y H:i',strtotime($valor['dataCadastro'])); ?></td>
                     <td><a href="info-cliente.php?id=<?php echo $valor['id']; ?>"><?php echo $valor['nome_completo']; ?></a></td>
                     <td class="hidden-mobile"><?php echo $valor['cidade']; ?></td>
                     <td><strong class="telefone"><?php echo $valor['whatsapp']; ?></strong></td>
-                    <td><a href="#modal<?php echo $valor['id']; ?>" class="btn-floating red modal-trigger"><i class="material-icons" >delete</i></a></td>
+                    <td class="hidden-mobile"><a href="#modal<?php echo $valor['id']; ?>" class="btn-floating red modal-trigger"><i class="material-icons" >delete</i></a></td>
                     <!-- Modal Structure -->
                       <div id="modal<?php echo $valor['id']; ?>" class="modal">
                         <div class="modal-content">
@@ -72,7 +72,7 @@ require_once 'server/estatistica.php';
                       </div>
                 </tr>
                 <?php 
-                }
+                endforeach;
                 ?>
             </tbody>
         </table>

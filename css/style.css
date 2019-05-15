@@ -11,62 +11,6 @@
     font-weight: 800; 
 }
 
-@media only screen and (max-width: 480px) {
-    #formulario-de-contato{
-        margin: 0 auto !important;
-        width: 95%;
-    }
-    #formulario-de-editar{
-        margin: 0 auto !important;
-        width: 95%;
-    }
-    #sessaoSucesso{
-        min-height: 500px;
-        background-color: ghostwhite;
-        margin: 0 auto !important;
-        width: 95%;
-        min-height: 400px;
-    }
-    #infoCliente{
-        min-height: 500px;
-        background-color: ghostwhite;
-        margin: 0 auto !important;
-        width: 95%;
-        min-height: 400px;
-    }
-    .hidden-mobile{
-        display: none;
-    }
-}
-@media only screen and (max-width: 800px) {
-    .estatistica{
-        display: none;
-    }
-}
-@media only screen and (min-width: 481px) {
-    #formulario-de-contato{
-        margin: 0 auto !important;
-        width: 60%;
-    }
-    #formulario-de-editar{
-        margin: 0 auto !important;
-        width: 60%;
-    }
-    #sessaoSucesso{
-        min-height: 500px;
-        background-color: ghostwhite;
-        margin: 0 auto !important;
-        width: 50%;
-        min-height: 400px;
-    }
-    #infoCliente{
-        min-height: 500px;
-        background-color: ghostwhite;
-        margin: 0 auto !important;
-        width: 300px;
-        min-height: 400px;
-    }
-}
 #listagemClientes{
     margin: 0 auto !important;;
     width: 60%;
@@ -156,4 +100,68 @@
 #page-footer .footer-copyright{
     background-color: #FFFFFF;
     text-align: center;
+}
+
+@media only screen and (max-width: 480px){
+    #formulario-de-contato{
+        margin: 0 auto !important;
+        width: 95%;
+    }
+    #formulario-de-editar{
+        margin: 0 auto !important;
+        width: 95%;
+    }
+    #sessaoSucesso{
+        min-height: 500px;
+        background-color: ghostwhite;
+        margin: 0 auto !important;
+        width: 95%;
+        min-height: 400px;
+    }
+    #infoCliente{
+        min-height: 500px;
+        background-color: ghostwhite;
+        margin: 0 auto !important;
+        width: 95%;
+        min-height: 400px;
+    }
+    .hidden-mobile{
+        display: none;
+    }
+    #listagemClientes{
+        width: 95%;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .estatistica{
+        display: none;
+    }
+}
+@media only screen and (min-width: 481px) {
+    #formulario-de-contato{
+        margin: 0 auto !important;
+        width: 60%;
+    }
+    #formulario-de-editar{
+        margin: 0 auto !important;
+        width: 60%;
+    }
+    #sessaoSucesso{
+        min-height: 500px;
+        background-color: ghostwhite;
+        margin: 0 auto !important;
+        width: 50%;
+        min-height: 400px;
+    }
+    #infoCliente{
+        min-height: 500px;
+        background-color: ghostwhite;
+        margin: 0 auto !important;
+        width: 300px;
+        min-height: 400px;
+    }
+    
+        
+
 }
