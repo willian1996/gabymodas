@@ -430,6 +430,52 @@
 </div>
 </div>
 
+<!--  Modal Rel Vendas-->
+<div class="modal fade" id="ModalRelDRE" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Relatório DRE</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+
+
+
+            <form action="../rel/rel_dre.php" method="POST" target="_blank">
+                <div class="modal-body">
+
+                 <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label >Data Inicial</label>
+                            <input value="<?php echo date('Y-m-d') ?>" type="date" class="form-control"  name="dataInicial" >
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+
+                        <div class="form-group">
+                            <label >Data Final</label>
+                            <input value="<?php echo date('Y-m-d') ?>" type="date" class="form-control"  name="dataFinal" >
+                        </div>
+
+
+                    </div>
+  
+                </div>     
+
+            </div>
+            <div class="modal-footer">
+
+                <button type="submit" class="btn btn-primary">Gerar Relatório</button>
+            </div>
+        </form>
+
+
+    </div>
+</div>
+</div>
 
 <!--  Modal Rel Encomendas-->
 <div class="modal fade" id="ModalRelEncomendas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

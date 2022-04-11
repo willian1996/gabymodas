@@ -218,7 +218,7 @@ $receitaBrutaF = number_format($receitaBruta, 2, ',', '.');
             </table>
         </div>
     </div>
-</div>
+</div> 
 
 
 

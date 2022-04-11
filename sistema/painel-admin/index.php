@@ -282,7 +282,7 @@ $pdo->query("UPDATE produtos SET promocao = 'Sim' where id = $id_pro");
                         <a href="" class="text-white collapse-item" data-toggle="modal" data-target="#ModalRelVendas">Relatório Vendas x Lucro</a>
                     </div>
                     <div class="bg-dark py-2 collapse-inner rounded">
-                        <a class="text-white collapse-item" href="index.php?pag=<?php echo $menu31 ?>">Relatório DRE</a>
+                        <a href="" class="text-white collapse-item"  data-toggle="modal" data-target="#ModalRelDRE">Relatório DRE</a>
                     </div>
                     
                 </div>
