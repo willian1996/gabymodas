@@ -159,7 +159,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <ul>
                 <li class="active"><a href="./index.php">Início</a></li>
                 <li><a href="lista-produtos.php">Lista de Produtos</a>   
-                    
+                <li><a href="galeria.php">Galeria</a>     
                 <li><a href="categorias.php">Categorias</a>     
                 <li><a href="carrinho.php">Sacola</a>
 

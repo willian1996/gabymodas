@@ -76,21 +76,15 @@ $querye = $pdo->query("SELECT * FROM tipo_envios where id = '$tipo_envio' ");
                     </div>
 
                     <div class="product__details__pic__slider owl-carousel">
-
                         <?php 
                          $query = $pdo->query("SELECT * FROM imagens where id_produto = '$id_produto' ");
                             $res = $query->fetchAll(PDO::FETCH_ASSOC);
-
                             for ($i=0; $i < count($res); $i++) { 
                               foreach ($res[$i] as $key => $value) {
                               }
-
-                              $imagem_prod = $res[$i]['imagem'];
                          ?>
-
-                        <img data-imgbigurl="img/produtos/detalhes/<?php echo $imagem_prod ?>"
-                        src="img/produtos/detalhes/<?php echo $imagem_prod ?>" alt="">
-
+                        <img data-imgbigurl="img/produtos/detalhes/<?php echo $res[$i]['imagem'] ?>"
+                        src="img/produtos/detalhes/<?php echo $res[$i]['imagem'] ?>" alt="">
                     <?php } ?>
                        
                     </div>

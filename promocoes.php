@@ -90,52 +90,36 @@ $nome_pag = 'promocoes.php';
                   $num_paginas = ceil($num_total/$itens_por_pagina);
 
                   ?>
-
-                  <div class="col-lg-4 col-md-6 col-sm-6 mt-4">
-                       <div class="product__discount__item">
-                    <div class="product__discount__item__pic set-bg"
-                    data-setbg="img/produtos/<?php echo $imagem ?>">
-                    <div class="product__discount__percent">-<?php echo $desconto ?>%</div>
-                    <ul class="product__item__pic__hover">
-                     <li><a href="produto-<?php echo $nome_url ?>"><i class="fa fa-eye"></i></a></li>
-                                      
-                     </ul>
-                 </div>
-                 <div class="product__discount__item__text">
-
-                    <h5><a href="produto-<?php echo $nome_url ?>"><?php echo $nome ?></a></h5>
-                    <div class="product__item__price">R$ <?php echo $valor_promo ?> <span>R$ <?php echo $valor ?></span></div>
-                </div>
-            </div>
+            <a href="produto-<?php echo $nome_url ?>">
+                <div class="col-lg-4 col-md-6 col-sm-6 mt-4">
+                    <div class="product__discount__item">
+                        <div class="product__discount__item__pic set-bg"
+                            data-setbg="img/produtos/<?php echo $imagem ?>">
+                            <div class="product__discount__percent">-<?php echo $desconto ?>%</div>
+                         </div>
+                         <div class="product__discount__item__text">
+                            <h5><a href="produto-<?php echo $nome_url ?>"><?php echo $nome ?></a></h5>
+                            <div class="product__item__price">R$ <?php echo $valor_promo ?> <span>R$ <?php echo $valor ?></span></div>
+                        </div>
                     </div>
-
-                <?php } ?>
-
-
-
-
-
-
+                </div>
+            </a>
+        <?php } ?>
+                
             </div>
             <div class="product__pagination">
                 <a href="<?php echo $nome_pag ?>?pagina=0"><i class="fa fa-long-arrow-left"></i></a>
-
                 <?php 
                     for($i = 0; $i < @$num_paginas; $i++){
                         $estilo = '';
                         if($pagina == $i){
                             $estilo = 'bg-info text-light';
                         }
-
                         if($pagina >= ($i - 2) && $pagina <= ($i + 2)){ ?>
                          <a href="<?php echo $nome_pag ?>?pagina=<?php echo $i ?>" class="<?php echo $estilo ?>"><?php echo $i + 1 ?></a>
-
                        <?php } 
-
                     }
                  ?>
-                
-                
                 <a href="<?php echo $nome_pag ?>?pagina=<?php echo @$num_paginas - 1 ?>"><i class="fa fa-long-arrow-right"></i></a>
             </div>
         </div>

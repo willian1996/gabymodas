@@ -15,5 +15,5 @@ if(@count($res) >= 2){
 $pdo->query("UPDATE promocao_banner SET ativo = 'Sim' WHERE id = '$id'");
 
 echo 'Ativado com Sucesso!!';
-
+ 
 ?>

@@ -2,7 +2,7 @@
 class PagSeguro{
 	private $email         = "williansalesgabriel@hotmail.com";
 	private $token_sandbox = "1FB4D7860EA9491BA7AB4A9D9336C275";
-	private $token_oficial = "d678b771-803f-4cdb-bac2-3506ed455b2fddf2c1d948b4aed50a509cb04504019c7b57-3966-41b2-b03e-4b01b4e7777b";
+	private $token_oficial = "85c06bb9-3de9-4af8-bd22-f8fa3e9295d28e07037b44f29f7eca879684c90512a980b1-2c4b-4ce6-93ed-0b521b7a3541";
 	private $url_retorno   = "https://lorrainemodas.com.br/pagamentos/pagseguro/notificacao.php";
 	
 	

@@ -14,7 +14,6 @@ $valor_frete = isset($_POST['vlr_frete'])?$_POST['vlr_frete']:"";
 $tem_frete = isset($_POST['existe_frete'])?$_POST['existe_frete']:"";
 $antigo = isset($_POST['antigo'])?$_POST['antigo']:"";
 @$sub_total = @$total - @$valor_frete;
-$TipoTaxaCartao = isset($_POST['tipotaxacartao'])?$_POST['tipotaxacartao']:"";
 
 //PEGANDO DADOS DO USUARIO
 $nome = isset($_POST['nome'])?$_POST['nome']:"";
@@ -35,36 +34,45 @@ $comentario = "";
 
 
 //VERIFICANDO QUAL FOI A FORMA DE PAGAMENTO
-if(!is_numeric($TipoTaxaCartao)){
-    echo 'Escolha a forma de pagamento!';
-	exit();
-}elseif($TipoTaxaCartao == 0){
-    $taxaCartao = 0;
-    $meioPagamento = "Dinheiro/ PIX";
 
-}elseif($TipoTaxaCartao == 4){
-    $taxaCartao = $total * 4 / 100;
-    $total += $taxaCartao;
-    $meioPagamento = "Débito";
+if($cobrarTaxaPagamentoOnline == "Sim"){
+    $TipoTaxaCartao = isset($_POST['tipotaxacartao'])?$_POST['tipotaxacartao']:"";
+    if(!is_numeric($TipoTaxaCartao)){
+        echo 'Escolha a forma de pagamento!';
+        exit();
+    }elseif($TipoTaxaCartao == 0){
+        $taxaCartao = 0;
+        $meioPagamento = "Dinheiro/ PIX";
 
-}elseif($TipoTaxaCartao == 5){
-    $taxaCartao = $total * 5 / 100;
-    $total += $taxaCartao;
-    $meioPagamento = "Crédito 1x";
+    }elseif($TipoTaxaCartao == 4){
+        $taxaCartao = $total * 4 / 100;
+        $total += $taxaCartao;
+        $meioPagamento = "Débito";
 
-}elseif($TipoTaxaCartao == 6){
-    $taxaCartao = $total * 6 / 100;
-    $total += $taxaCartao;
-    $meioPagamento = "Crédito 2x";
+    }elseif($TipoTaxaCartao == 5){
+        $taxaCartao = $total * 5 / 100;
+        $total += $taxaCartao;
+        $meioPagamento = "Crédito 1x";
 
-}elseif($TipoTaxaCartao == 7){
-    $taxaCartao = $total * 7 /100;
-    $total += $taxaCartao;
-    $meioPagamento = "Crédito 3x";
+    }elseif($TipoTaxaCartao == 6){
+        $taxaCartao = $total * 6 / 100;
+        $total += $taxaCartao;
+        $meioPagamento = "Crédito 2x";
+
+    }elseif($TipoTaxaCartao == 7){
+        $taxaCartao = $total * 7 /100;
+        $total += $taxaCartao;
+        $meioPagamento = "Crédito 3x";
+    }else{
+        echo "Erro ao calcular a taxa de cartão!";
+        exit();
+    }    
+    
 }else{
-    echo "Erro ao calcular a taxa de cartão!";
-    exit();
-}    
+    $meioPagamento = "";
+    $taxaCartao = "";
+} 
+
 
 
 
@@ -221,8 +229,8 @@ try{
 } 
 
 //INSERINDO MENSAGEM AO CLIENTE
-$texto = "Seu pedido foi solicitado, aguarde, entraremos em contato pelo WhatsApp para confirmar o pedido e combinar a entrega.<br> Qualquer duvida chame no WhatsApp (12)98181-9956";
-$pdo->query("INSERT mensagem SET id_venda = '$id_venda', texto = '$texto', usuario = 'Admin', data = curDate(), hora = curTime()");
+
+$pdo->query("INSERT mensagem SET id_venda = '$id_venda', texto = '$textoAoFinalizarCompra', usuario = 'Admin', data = curDate(), hora = curTime()");
 
 if($comentario != ""){
     $res = $pdo->prepare("INSERT mensagem SET id_venda = :id_venda, texto = :texto, usuario = :usuario, data = curDate(), hora = curTime()");
@@ -232,6 +240,6 @@ if($comentario != ""){
     $res->execute();
 }
 
-echo $cpf;
+echo $id_venda;
 
 ?>

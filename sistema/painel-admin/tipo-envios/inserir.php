@@ -26,7 +26,7 @@ if($nome != $antigo){
 
 
 if($id == ""){
-	$res = $pdo->prepare("INSERT INTO tipo_envios (nome) VALUES (:nome)");
+	$res = $pdo->prepare("INSERT INTO tipo_envios (nome, ativo) VALUES (:nome, 'Não')");
 	
 }else{
 

@@ -20,7 +20,7 @@ if(@$_SESSION['id_usuario'] == null || @$_SESSION['nivel_usuario'] != 'Admin'){
 
 
 <!-- DataTales Example -->
-<center><h3>Promoções Cadastradas</h3></center>
+<center><h4>Promoções Cadastradas</h4></center>
 <div class="card shadow mb-4">
 
     <div class="card-body">

@@ -216,16 +216,11 @@ $dados = $res_2->fetchAll(PDO::FETCH_ASSOC);
 <body>
 
 	<?php if($cabecalho_img_rel == 'Sim'){ ?>
-
 		<div class="img-cabecalho my-4">
 			<img src="<?php echo $url_sistema ?>img/topo-relatorio.jpg" width="100%">
 		</div>
-
 	<?php }else{ ?>
-
-
 		<div class="cabecalho">
-
 			<div class="row titulos">
 				<div class="col-sm-2 esquerda_float image">	
 					<img src="<?php echo $url_sistema ?>img/logo.jpg" width="90px">
@@ -235,49 +230,29 @@ $dados = $res_2->fetchAll(PDO::FETCH_ASSOC);
 
 					<div class="areaSubtituloCab">
 						<h6 class="subtitulo"><?php echo $endereco_sistema . ' Tel: '.$telefone_sistema  ?></h6>
-
-
 					</div>
-
 				</div>
 			</div>
-
 		</div>
-
 	<?php } ?>
-
 	<div class="container">
-
-		
 		<div align="center" class="divTitulo">	
 			<span class="titulorel">Fluxo de Caixa - <?php echo $status ?> </span>
 		</div>
-
-
 		<hr>
-
-
 		<small><small>
 			<div class="row">
 				<div class="col-sm-6 esquerda">	
 					<span class=""> <b> Caixa : </b> <span class=""><?php echo $nome_caixa ?></span> </span>
-
 					<span class=""> <b> Operador : </b> <span class=""><?php echo $nome_operador ?></span> </span>
-
-					
 				</div>
 				<div class="col-sm-6 direita" align="right">
-
 				<span class=""> <b>Valor Quebra : </b> <span class="text-danger">R$ <?php echo $valor_quebra ?></span> </span>
-
 					<span class=""> <b> Total Vendido :</b><span class="<?php echo $classeSaldo ?>"> R$ <?php echo $total_vendido ?></span>  </span>
 				</div>
 			</div>
 		</small></small>
-
 		<hr>
-
-
 		<small><small>
 			<div class="row">
 				<div class="col-sm-6 esquerda">	

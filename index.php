@@ -156,19 +156,12 @@ require_once("conexao.php");
     $valor_promo = number_format($valor_promo, 2, ',', '.');
 
     ?>
-
+<a href="produto-<?php echo $nome_url ?>">
     <div class="col-lg-3 col-md-4 col-sm-6 mix sapatos fresh-meat">
       <div class="product__discount__item">
         <div class="product__discount__item__pic set-bg"
         data-setbg="img/produtos/<?php echo $imagem ?>">
         <div class="product__discount__percent">-<?php echo $desconto ?>%</div>
-        <ul class="product__item__pic__hover">
-         <li><a href="produto-<?php echo $nome_url ?>"><i class="fa fa-eye"></i></a></li>
-
-
-
-
-         </ul>
        </div>
        <div class="product__discount__item__text">
 
@@ -177,18 +170,12 @@ require_once("conexao.php");
       </div>
     </div>
   </div>
-
+</a>
 <?php }else{ ?>
-
-
+<a href="produto-<?php echo $nome_url ?>">
   <div class="col-lg-3 col-md-4 col-sm-6 mix sapatos fresh-meat">
     <div class="featured__item">
       <div class="featured__item__pic set-bg" data-setbg="img/produtos/<?php echo $imagem ?>">
-        <ul class="featured__item__pic__hover">
-          <li><a href="produto-<?php echo $nome_url ?>"><i class="fa fa-eye"></i></a></li>
-
-
-          </ul>
         </div>
         <div class="featured__item__text">
           <a href="produto-<?php echo $nome_url ?>"><h6><?php echo $nome ?></h6>
@@ -196,7 +183,7 @@ require_once("conexao.php");
           </div>
         </div>
       </div>
-
+</a>
     <?php } } ?>
 
 

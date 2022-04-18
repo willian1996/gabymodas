@@ -2,11 +2,8 @@
 require_once("cabecalho.php");
 require_once("conexao.php");
  
-//includes para o mercado pago
-include_once("pagamentos/mercadopago/lib/mercadopago.php");
-include_once("pagamentos/mercadopago/PagamentoMP.php");
-$pagar = new PagamentoMP;  
-?> 
+  
+?>  
 
 <?php
 //require_once("cabecalho-busca.php");
@@ -45,56 +42,30 @@ $estado = $dados[0]['estado'];
 
 ?>
 
+<!-- checkout section  -->
 <section class="checkout-section spad">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 order-1 order-lg-1">
+            <div class="col-lg-12 order-2 order-lg-1">
                 <form class="checkout-form" method="post" id="form-dados">
-                    <div class="cf-title">Confirme Seus Dados</div>
+                    <div class="cf-title">Confirme Dados de Entrega</div>
                     <div class="row address-inputs">
                         <div class="col-md-12">
                             <input type="text" value="<?php echo @$nome_usuario ?>" name="nome" id="nome" placeholder="nome completo" required>
-                            <input value="<?php echo @$email_usuario ?>" type="text" name="email" id="email" placeholder="email">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <input value="<?php echo @$cpf_usuario ?>" type="text" name="cpf" id="cpf" placeholder="CPF" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <input type="text" value="<?php echo @$telefone ?>" name="telefone" id="telefone" placeholder="whatsapp" required>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <input type="text" value="<?php echo @$cep ?>" name="cep" id="cep" placeholder="cep" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <input type="text" value="<?php echo @$rua ?>" name="rua" id="logradouro" placeholder="endereço" required>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <input type="text" value="<?php echo @$numero ?>" name="numero" id="numero" placeholder="número da casa" required>
-                                </div>
-                                <div class="col-md-6">
-                                <input type="text" value="<?php echo @$bairro ?>" name="bairro" id="bairro" placeholder="bairro" required>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <input type="text" class="form-control" value="<?php echo @$cidade ?>" id="localidade" name="cidade" placeholder="cidade" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <input type="text" value="SP" name="estado" id="uf" maxlength="2">
-                                </div>
-                            </div>
-                            
+                            <input value="<?php echo @$cpf_usuario ?>" type="text" name="cpf" id="cpf" placeholder="CPF" required>
+                            <input value="<?php echo @$email_usuario ?>" type="hidden" name="email" id="email" placeholder="email">
+                            <input type="text" value="<?php echo @$telefone ?>" name="telefone" id="telefone" placeholder="whatsapp" required>
+                            <input type="text" value="<?php echo @$cep ?>" name="cep" id="cep" placeholder="cep" required>
+                            <input type="text" value="<?php echo @$rua ?>" name="rua" id="logradouro" placeholder="endereço" required>
+                            <input type="text" value="<?php echo @$numero ?>" name="numero" id="numero" placeholder="número da casa" required>
+                            <input type="text" value="<?php echo @$bairro ?>" name="bairro" id="bairro" placeholder="bairro" required>
+                            <input type="text" class="form-control" value="<?php echo @$cidade ?>" id="localidade" name="cidade" placeholder="cidade" required>
+                            <input type="hidden" value="SP" name="estado" id="uf" >
                             <input type="text" value="<?php echo @$complemento ?>" name="complemento" id="complemento" placeholder="ponto de referência" required>
 
                         </div>
                     </div>
-                <?php if($cobrarTaxaPagamentoOnline == "Sim"){?>
-
-                    <div class="cf-title">Forma de Pagamento</div>
+                    <div class="cf-title">Forma de Pagamento na Entrega</div>
                     <div class="row shipping-btns">
                         <div class="col-6">
                             <h4>Dinheiro/ PIX</h4>
@@ -152,13 +123,21 @@ $estado = $dados[0]['estado'];
                             </div>
                         </div>
                     </div>
-            <?php } ?> 
+                    <div class="cf-title">Resumo do Pedido</div>
+
+
             </div>
-            <div class="col-lg-4 order-2 order-lg-2">
-                <div class="checkout-cart">
-<!--                    <h3>Sua compra</h3>-->
-                    <ul class="product-list">
-                                                       <?php 
+        </div>
+    
+    
+        <div class="checkout__form pl-1 pt-1 pr-1 col-lg-12 col-md-6">
+
+                    
+                        <div class="checkout__order">
+                            <div class="checkout__order__products">Produtos <span>Total</span></div>
+                            <ul>
+
+                                <?php 
                                 $res = $pdo->query("SELECT * from carrinho where id_usuario = '$id_usuario' and id_venda = 0 order by id asc");
                                 $dados = $res->fetchAll(PDO::FETCH_ASSOC);
                                 $linhas = count($dados);
@@ -239,46 +218,47 @@ $estado = $dados[0]['estado'];
 
 
                           ?>
-                          <li>
-                            <div class="pl-thumb"><img src="img/produtos/<?php echo $imagem ?>" alt=""></div>
-                            <h6><?php echo $nome_produto ?></h6>
-                            <p>R$<?php echo $total_item ?></p>
-                          </li>
-
+                          <li><?php echo $nome_produto ?> <span>R$<?php echo $total_item ?></span></li>
+<br><br>
                           
 
                           <?php } 
                           @$total = number_format(@$total, 2, ',', '.');
                            ?>
+                      </ul>
+                      <div class="checkout__order__subtotal">Subtotal <span>R$ <?php echo $total; ?></span></div>
+                      <div class="checkout__order__combinar">Taxa de entrega <span>a combinar</span></div>  
+                      <div class="checkout__order__combinar">Taxa de cartão<span id="taxa_cartao">a calcular</span></div>     
 
-                    </ul>
-                    <ul class="price-list">
-                        <li>Subtotal<span>R$ <?php echo $total ?></span></li>
-                        <li>Frete<span>A combinar</span></li>
-                        <?php if($cobrarTaxaPagamentoOnline == "Sim"){?>
-                            <li>Taxa Cartão<span id="taxa_cartao">A calcular</span></li>
-                        <?php } ?>
-                        <li class="total">Total<span id="total_final"></span></li>
-                       
-                    </ul>
-                     <div class="mt-2" id="mensagem-finalizar"></div>
-                </div>
-                <input type="hidden" value="0" id="vlr_frete" name="vlr_frete">
-                <input type="hidden" value="<?php echo @$frete_correios ?>" id="existe_frete" name="existe_frete">
-                <?php if($cobrarTaxaPagamentoOnline == "Sim"){?>
-                    <input type="hidden" value="" id="tipotaxacartao" name="tipotaxacartao">
-                <?php } ?>
-                <input type="hidden" value="<?php echo @$total ?>" id="total_compra" name="total_compra">
-                <input type="hidden" value="<?php echo @$total_custo ?>" id="total_custo" name="total_custo">
-                <input type="hidden" value="<?php echo @$cpf_usuario ?>" id="antigo" name="antigo">
-                
-                <button id="btn-finalizar" class="site-btn submit-order-btn">Finalizar Compra</button>
-                </form>
-                
-            </div>
-        </div>
-    </div>
+      
+
+ 
+                                      
+
+                      <div  class="checkout__order__total">Total <span id="total_final"></span></div>
+                     
+
+                      <input type="hidden" value="0" id="vlr_frete" name="vlr_frete">
+                      <input type="hidden" value="<?php echo @$frete_correios ?>" id="existe_frete" name="existe_frete">
+                      <input type="hidden" value="" id="tipotaxacartao" name="tipotaxacartao">
+                      <input type="hidden" value="<?php echo @$total ?>" id="total_compra" name="total_compra">
+                      <input type="hidden" value="<?php echo @$total_custo ?>" id="total_custo" name="total_custo">
+                      <input type="hidden" value="<?php echo @$cpf_usuario ?>" id="antigo" name="antigo">
+
+                      <button id="btn-finalizar" type="submit" class="site-btn bg-success">FINALIZAR COMPRA</button>
+                     </form>
+
+                      <div class="mt-2" id="mensagem-finalizar"></div>
+                  </div>
+              
+          </div>
+     
+  </div>
+
 </section>
+<!-- Checkout Section End -->
+
+
 
 
 
@@ -321,64 +301,69 @@ cep.addEventListener("blur",(e)=>{
 </script>
 
 
+<script type="text/javascript">
+  $( document ).ready(function() {
+    var total = "<?=$total?>";
+    var id_venda = "<?=$id_venda?>";
 
-    <script type="text/javascript">
-      $( document ).ready(function() {
-        var total = "<?=$total?>";
-        var id_venda = "<?=$id_venda?>";
+    if(total == "0,00" &&  id_venda == ""){
+        window.location="produtos.php";
+    }
+  
+    
+    $('#total_final').text("R$ " + total);
+    $('#total_pgto').text("R$ " + total);
+    
+      
+    //CALCULANDO A PORCENTAGEM DAS TAXAS 
+    total = total.replace(',', '.');
+    total = parseFloat(total);
+    
+    var taxaDebito = total * 4 / 100;
+    var taxaCredito1x = total * 5 / 100;
+    var taxaCredito2x = total * 6 / 100;
+    var taxaCredito3x = total * 7 / 100;
+    
+    //FORMATANDO PARA MOEDA NACIONAL 
+    taxaDebito = taxaDebito.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
+    taxaCredito1x = taxaCredito1x.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
+    taxaCredito2x = taxaCredito2x.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
+    taxaCredito3x = taxaCredito3x.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
+    
+    //MOSTRANDO AS TAXAS PARA O USUARIO ESCOLHER
+    $("label[for='dinheiro_pix']").html(" + R$ "+ 0,00);
+    $("label[for='debito']").html("+ "+taxaDebito);
+    $("label[for='credito_1x']").html("+ "+taxaCredito1x);
+    $("label[for='credito_2x']").html("+ "+taxaCredito2x);
+    $("label[for='credito_3x']").html("+ "+taxaCredito3x);
+      
+    //VERIFICANDO QUAL IMPUT RADIO O USUARIO ESCOLHEU E PEGANDO O VALOR
+    $('input[name="taxapgto"]').click(function() {     
+        var tipotaxapgto = $('input[name="taxapgto"]:checked').val();
+        
+        //TOTALIZANDO TAXA CARTÃO NO RESUMO DA VENDA
+        var taxaCartao = total * tipotaxapgto / 100
+        taxaCartao = taxaCartao.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
+        $('#tipotaxacartao').val(tipotaxapgto);
+        $('#taxa_cartao').text(taxaCartao);
+        
+        totalF = total + (total * tipotaxapgto / 100);
+        totalF = totalF.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
+        
+        $('#total_final').text(totalF);
+        $('#total_pgto').text(totalF);
+    });
+   
+      
+    
 
-        if(total == "0,00" &&  id_venda == ""){
-            window.location="produtos.php";
-        }
 
 
-        $('#total_final').text("R$ " + total);
-        $('#total_pgto').text("R$ " + total);
 
-        //CALCULANDO A PORCENTAGEM DAS TAXAS 
-        <?php if($cobrarTaxaPagamentoOnline == "Sim"){?>  
-            
-            total = total.replace(',', '.');
-            total = parseFloat(total);
 
-            var taxaDebito = total * 4 / 100;
-            var taxaCredito1x = total * 5 / 100;
-            var taxaCredito2x = total * 6 / 100;
-            var taxaCredito3x = total * 7 / 100;
 
-            //FORMATANDO PARA MOEDA NACIONAL 
-            taxaDebito = taxaDebito.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
-            taxaCredito1x = taxaCredito1x.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
-            taxaCredito2x = taxaCredito2x.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
-            taxaCredito3x = taxaCredito3x.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
-
-            //MOSTRANDO AS TAXAS PARA O USUARIO ESCOLHER
-            $("label[for='dinheiro_pix']").html(" + R$ "+ '0,00');
-            $("label[for='debito']").html("+ "+taxaDebito);
-            $("label[for='credito_1x']").html("+ "+taxaCredito1x);
-            $("label[for='credito_2x']").html("+ "+taxaCredito2x);
-            $("label[for='credito_3x']").html("+ "+taxaCredito3x);
-
-            //VERIFICANDO QUAL IMPUT RADIO O USUARIO ESCOLHEU E PEGANDO O VALOR
-            $('input[name="taxapgto"]').click(function() {     
-                var tipotaxapgto = $('input[name="taxapgto"]:checked').val();
-
-                //TOTALIZANDO TAXA CARTÃO NO RESUMO DA VENDA
-                var taxaCartao = total * tipotaxapgto / 100
-                taxaCartao = taxaCartao.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
-                $('#tipotaxacartao').val(tipotaxapgto);
-                $('#taxa_cartao').text(taxaCartao);
-
-                totalF = total + (total * tipotaxapgto / 100);
-                totalF = totalF.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
-
-                $('#total_final').text(totalF);
-                $('#total_pgto').text(totalF);
-            });
-        <?php } ?>
-
-      })
-    </script>
+  })
+</script>
 
 
 <script type="text/javascript">
@@ -485,21 +470,15 @@ cep.addEventListener("blur",(e)=>{
             $('#mensagem-finalizar').addClass('text-danger')
             $('#mensagem-finalizar').text(msg);
             
-        }
-          //COBRAR TAXA DE PAGAMENTO ONLINE
-        <?php if($cobrarTaxaPagamentoOnline == "Sim"){?>
-              else if(msg.trim() === 'Escolha a forma de pagamento!'){
-                $('#mensagem-finalizar').addClass('text-danger')
-                $('#mensagem-finalizar').text(msg);
-
-              }else if(msg.trim() === 'Erro ao calcular a taxa de cartão!'){
-                $('#mensagem-finalizar').addClass('text-danger')
-                $('#mensagem-finalizar').text(msg);
-
-              }
-        <?php } ?>
-          
-        else if(msg.trim() === 'Preencha o campo nome!'){
+        }else if(msg.trim() === 'Escolha a forma de pagamento!'){
+            $('#mensagem-finalizar').addClass('text-danger')
+            $('#mensagem-finalizar').text(msg);
+            
+        }else if(msg.trim() === 'Erro ao calcular a taxa de cartão!'){
+            $('#mensagem-finalizar').addClass('text-danger')
+            $('#mensagem-finalizar').text(msg);
+            
+        }else if(msg.trim() === 'Preencha o campo nome!'){
             $('#mensagem-finalizar').addClass('text-danger')
             $('#mensagem-finalizar').text(msg);
             
@@ -567,13 +546,13 @@ cep.addEventListener("blur",(e)=>{
             $('#mensagem-finalizar').addClass('text-danger')
             $('#mensagem-finalizar').text(msg);
         }else{ 
-             window.location="checkout.php?id_venda=" + msg;
-             //receber vendas apenas por pagseguro 
-            //window.location="pagamentos/pagseguro/checkout.php?codigo=" + msg;
+            // receber vendas por pagseguro 
+//            window.location="pagamentos/pagseguro/checkout.php?codigo=" + msg;
             
-    
             
-//            window.location= "http://localhost/gabymodas/sistema/painel-cliente";
+//            window.location="https://api.whatsapp.com/send?phone=5512981819956&text=Ol%C3%A1%20acabei%20de%20finalizar%20minha%20compra%2C%20veja%20https%3A%2F%2Fgabymodas.com%2Fsistema%2Findex.php%3Fcpf%3D"+msg;
+            
+            window.location= "http://localhost/gabymodas/sistema/painel-cliente";
         }
         
       },
@@ -617,32 +596,4 @@ $(document).ready(function() {
 require_once("modal-pagamento.php");
  ?>
 
-<!--AJAX PARA SALVAR O MEIO DE PAGAMENTO DA COMPRA -->
-<script type="text/javascript">
-    function SalvarMeioPagamento(meioPagamento, idVenda){
-        var meioPagamento = meioPagamento;
-        var idVenda = idVenda;
-        
-        
-    
-        $.ajax({
-            url: "meiopagamento/inserir.php",
-            method: "POST",
-            dataType: "json",
-            data: {'meiopagamento':meioPagamento, 'idvenda':idVenda},
 
-            success: function (mensagem) {
-
-                if (mensagem.trim() == "Salvo com Sucesso!!") {
-                    console.log(mensagem.trim());
-                } else {
-                    console.log(mensagem.trim());
-                    
-                }
-
-               
-
-            }
-        });
-   }
-</script>

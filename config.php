@@ -64,7 +64,11 @@ $aviso_recebimento = 'N';
 //1 Para caixa/Pacote  -   2 para rolo/prisma  -   3 para envelope
 $formato_frete = 1;
 
+//NA HORA DE FINALIZAR COMPRA 
+$cobrarTaxaPagamentoOnline = "Não";
 
+//TEXTO QUE SERÁ ENVIADO AO USUARIO AO FINALIZAR A COMPRA
+$textoAoFinalizarCompra = "Seu pedido foi solicitado, aguarde, entraremos em contato pelo WhatsApp para confirmar o pedido e combinar a entrega.<br> Qualquer duvida chame no WhatsApp (12)98181-9956";
 
 //VARIAVEIS PARA O CUPOM
 //total de cartões para o cliente trocar pelo cumpom de desconto

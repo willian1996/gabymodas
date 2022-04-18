@@ -14,8 +14,8 @@
      // contrário o sistema estará em modo de produção
      private $sandbox = false;
      // Suas credenciais do mercado pago
-      private $client_id = "6748425745253616";
-     private $client_secret = "Xpx0Xyi3nZgAGQMAYSOK0wrQjCLxzRZP";
+      private $client_id = "7871876797761259";
+     private $client_secret = "vwR0GLchweoXv9hteLmTohuJHL8dwbgz";
      
      public function PagarMP($ref , $nome , $valor , $url){
      // iniciando as credenciais do MP
@@ -55,10 +55,10 @@
             $mp->sandbox_mode(FALSE);
             $link = $preference["response"]["init_point"];
            endif;
-        $this->btn_mp = '<a title="Mercado Pago - Pagamento Imediato" class="" id="btnMP" target="_blank" href="'.$link.'" '; 
-       $this->btn_mp .= 'name="MP-Checkout" ><img src="img/pagamentos/mercadopago.jpg" width="200"></a>';
+         
+        $this->btn_mp = "<a onclick=\"SalvarMeioPagamento('mercadopago', $ref)\" title='Mercado Pago' id='btnMP' href=$link name='MP-Checkout' ><img src='img/pagamentos/mercadopago.jpg' width='355'></a>";
          if($this->lightbox):
-            $this->btn_mp .= '<script type="text/javascript" src="//secure.mlstatic.com/mptools/render.js"></script>';
+            $this->btn_mp .= "<script type='text/javascript' src='//secure.mlstatic.com/mptools/render.js'></script>";
           endif;
      
         return $this->btn_mp;

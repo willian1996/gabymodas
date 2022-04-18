@@ -62,6 +62,7 @@ $menu28 = "movimentacoes";
 $menu29 = "fornecedores";
 $menu30 = "pedido";
 $menu31 = "dre";
+$menu32 = "pagamento-online";
 
 
 //CONSULTAR O BANCO DE DADOS E TRAZER OS DADOS DO USUÁRIO
@@ -288,6 +289,13 @@ $pdo->query("UPDATE produtos SET promocao = 'Sim' where id = $id_pro");
                 </div>
                 
             </li>
+            
+            <li class="nav-item">
+                
+                <a class="nav-link" href="index.php?pag=<?php echo $menu32 ?>">
+                    <i class="fas fa-money-bill-alt"></i>
+                    <span>Pagamento Online</span></a>
+            </li>
 
             
             
@@ -311,11 +319,13 @@ $pdo->query("UPDATE produtos SET promocao = 'Sim' where id = $id_pro");
                     <span>Promoções</span></a>
             </li>
             
+<!--
             <li class="nav-item">
                 <a class="nav-link" href="index.php?pag=<?php echo $menu12 ?>">
                     <i class="fas fa-fw fa-ticket-alt"></i>
                     <span>Cupons</span></a>
                 </li>
+-->
             
             <li class="nav-item">
                 
@@ -582,6 +592,9 @@ $pdo->query("UPDATE produtos SET promocao = 'Sim' where id = $id_pro");
 
                                 }else if($pag==$menu31){
                                     include_once($menu31.".php");
+    
+                                }else if($pag==$menu32){
+                                    include_once($menu32.".php");
     
                                 } else {
                                     include_once("home.php");

@@ -1,5 +1,5 @@
 <?php 
-$pag = "tipo-envios";
+$pag = "pagamento-online";
 require_once("../../conexao.php"); 
 @session_start();
     //verificar se o usuário está autenticado
@@ -9,39 +9,26 @@ if(@$_SESSION['id_usuario'] == null || @$_SESSION['nivel_usuario'] != 'Admin'){
 }
 
 
-//VERIFICAR SE OS TIPOS DE ENVIO OBRIGATÓRIOS JÁ ESTÃO CADASTRADOS, CASO CONTRÁRIO CADASTRAR
- $query = $pdo->query("SELECT * FROM tipo_envios where nome = 'Correios' ");
+//VERIFICAR SE OS PAGAMNETOS ONLINES OBRIGATÓRIOS JÁ ESTÃO CADASTRADOS, CASO CONTRÁRIO CADASTRAR
+ $query = $pdo->query("SELECT * FROM pagamento_online where nome = 'PagSeguro' ");
  $res = $query->fetchAll(PDO::FETCH_ASSOC);
  if(@count($res)==0){
-    $pdo->query("INSERT INTO tipo_envios (nome) values ('Correios') ");
+    $pdo->query("INSERT INTO pagamento_online (nome) values ('PagSeguro') ");
  }
 
-  $query = $pdo->query("SELECT * FROM tipo_envios where nome = 'Melhor Envio' ");
+  $query = $pdo->query("SELECT * FROM pagamento_online where nome = 'MercadoPago' ");
  $res = $query->fetchAll(PDO::FETCH_ASSOC);
  if(@count($res)==0){
-    $pdo->query("INSERT INTO tipo_envios (nome) values ('Melhor Envio') ");
+    $pdo->query("INSERT INTO pagamento_online (nome) values ('MercadoPago') ");
  }
 
  
 
-//  $query = $pdo->query("SELECT * FROM tipo_envios where nome = 'Digital' ");
-// $res = $query->fetchAll(PDO::FETCH_ASSOC);
-// if(@count($res)==0){
-//    $pdo->query("INSERT INTO tipo_envios (nome) values ('Digital') ");
-// }
-
 ?>
 
-<!--
-<div class="row mt-4 mb-4">
-    <a type="button" class="btn-primary btn-sm ml-3 d-none d-md-block" href="index.php?pag=<?php echo $pag ?>&funcao=novo">Novo Tipo</a>
-    <a type="button" class="btn-primary btn-sm ml-3 d-block d-sm-none" href="index.php?pag=<?php echo $pag ?>&funcao=novo">+</a>
-    
-</div>
--->
 
 
-<center><h4>Tipo de Envios</h4></center>
+<center><h4>Pagamentos Online - Check-out transparente</h4></center>
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
 
@@ -50,9 +37,13 @@ if(@$_SESSION['id_usuario'] == null || @$_SESSION['nivel_usuario'] != 'Admin'){
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
+                        <th>Ativar</th>
                         <th>Nome</th>
-                       
+                        <th>Token Sandbox</th>
+                        <th>Token Oficial</th>
+                        <th>E-mail</th>
                         <th>Ações</th>
+                        
                     </tr>
                 </thead>
 
@@ -60,7 +51,7 @@ if(@$_SESSION['id_usuario'] == null || @$_SESSION['nivel_usuario'] != 'Admin'){
 
                    <?php 
 
-                   $query = $pdo->query("SELECT * FROM tipo_envios ");
+                   $query = $pdo->query("SELECT * FROM pagamento_online ");
                    $res = $query->fetchAll(PDO::FETCH_ASSOC);
 
                    for ($i=0; $i < count($res); $i++) { 
@@ -70,31 +61,33 @@ if(@$_SESSION['id_usuario'] == null || @$_SESSION['nivel_usuario'] != 'Admin'){
                       $nome = $res[$i]['nome'];
                       $id = $res[$i]['id'];
                       $ativo = $res[$i]['ativo'];
+                      $token_sandbox = $res[$i]['token_sandbox'];
+                      $token_oficial = $res[$i]['token_oficial'];
+                      $email = $res[$i]['email'];
 
                        
                       ?>
 
 
                     <tr>
-                        <td><?php echo $nome ?></td>
-                       
-
                         <td>
-<!--
-                             <a href="index.php?pag=<?php echo $pag ?>&funcao=editar&id=<?php echo $id ?>" class='text-primary mr-1' title='Editar Dados'><i class='far fa-edit'></i></a>
-                            <a href="index.php?pag=<?php echo $pag ?>&funcao=excluir&id=<?php echo $id ?>" class='text-danger mr-1' title='Excluir Registro'><i class='far fa-trash-alt'></i></a>
--->
+
                             <?php if($ativo == "Sim"){
 
                                     echo "
-                                    <a href='#' class='mr-1' title='Desativar Envio'>
+                                    <a href='#' class='mr-1' title='Desativar Pagamento'>
                                     <i class='far fa-check-square  text-success'></i> </a>";
                                 }else{
                                     echo "
-                                      <a href='index.php?pag=$pag&funcao=ativar&id=$id' class='mr-1' title='Ativar Envio'>
+                                      <a href='index.php?pag=$pag&funcao=ativar&id=$id' class='mr-1' title='Ativar Pagamento'>
                                     <i class='far fa-square text-danger'></i></a>";
                             } ?>
                         </td>
+                        <td><?php echo $nome ?></td>
+                        <td><?php echo $token_sandbox ?></td>
+                        <td><?php echo $token_oficial ?></td>
+                        <td><?php echo $email ?></td>
+                        <td><a href="index.php?pag=<?php echo $pag ?>&funcao=editar&id=<?php echo $id ?>" class='text-primary mr-1' title='Editar Dados'><i class='far fa-edit'></i></a></td>
                     </tr>
 <?php } ?>
 
@@ -122,11 +115,13 @@ if(@$_SESSION['id_usuario'] == null || @$_SESSION['nivel_usuario'] != 'Admin'){
                     $titulo = "Editar Registro";
                     $id2 = $_GET['id'];
 
-                    $query = $pdo->query("SELECT * FROM tipo_envios where id = '" . $id2 . "' ");
+                    $query = $pdo->query("SELECT * FROM pagamento_online where id = '" . $id2 . "' ");
                     $res = $query->fetchAll(PDO::FETCH_ASSOC);
 
                     $nome2 = $res[0]['nome'];
-                                                            
+                    $email2 = $res[0]['email'];
+                    $token_sandbox2 = $res[0]['token_sandbox'];    
+                    $token_oficial2 = $res[0]['token_oficial'];                                        
 
                 } else {
                     $titulo = "Inserir Registro";
@@ -146,7 +141,19 @@ if(@$_SESSION['id_usuario'] == null || @$_SESSION['nivel_usuario'] != 'Admin'){
 
                     <div class="form-group">
                         <label >Nome</label>
-                        <input value="<?php echo @$nome2 ?>" type="text" class="form-control" id="nome-cat" name="nome-cat" placeholder="Nome">
+                        <input value="<?php echo @$nome2 ?>" type="text" class="form-control" id="nome-cat" name="nome-cat" placeholder="nome">
+                    </div>
+                    <div class="form-group">
+                        <label >E-mail</label>
+                        <input value="<?php echo @$email2 ?>" type="text" class="form-control" id="email" name="email" placeholder="email">
+                    </div>
+                    <div class="form-group">
+                        <label >Token Sandbox</label>
+                        <input value="<?php echo @$token_sandbox2 ?>" type="text" class="form-control" id="token_sandbox" name="token_sandbox" placeholder="token sandbox">
+                    </div>
+                    <div class="form-group">
+                        <label >Token Oficial</label>
+                        <input value="<?php echo @$token_oficial2 ?>" type="text" class="form-control" id="token_oficial" name="token_oficial" placeholder="token oficial">
                     </div>
 
                   
@@ -218,14 +225,14 @@ if(@$_SESSION['id_usuario'] == null || @$_SESSION['nivel_usuario'] != 'Admin'){
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Ativar Forma de Envio</h5>
+                <h5 class="modal-title">Ativar Pagamento Online</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
 
-                <p>Deseja realmente ativar esta forma de envio?</p>
+                <p>Deseja realmente ativar esta pagamento?</p>
 
                 <div align="center" id="mensagem_ativar" class="">
 
@@ -253,14 +260,14 @@ if(@$_SESSION['id_usuario'] == null || @$_SESSION['nivel_usuario'] != 'Admin'){
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Desativar Forma de Envio</h5>
+                <h5 class="modal-title">Desativar Pagamanto Online</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
 
-                <p>Deseja realmente desativar esta forma envio?</p>
+                <p>Deseja realmente desativar esta pagamento?</p>
 
                 <div align="center" id="mensagem_ativar" class="">
 
@@ -472,7 +479,7 @@ if (@$_GET["funcao"] != null && @$_GET["funcao"] == "desativar") {
                 dataType: "text",
                 success: function (mensagem) {
 
-                    if (mensagem.trim() === 'Desativado com sucesso, ative outra forma de envio!!') {
+                    if (mensagem.trim() === 'Desativado com sucesso, ative outro pagamento!!') {
 
                        
                         $('#btn-cancelar-desativar').click();

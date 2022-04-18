@@ -100,9 +100,9 @@ $querye = $pdo->query("SELECT * FROM tipo_envios where id = '$tipo_envio' ");
                     <p><?php echo $descricao ?></p>
                     
                     <div><br>
-                    <a href="index.php?pag=<?php echo $pag ?>&funcao=editar&id=<?php echo $id_produto ?>" class='text-primary mr-1' title='editar caracteristicas'><i class='fas fa-pen-square '> Editar Produto</i> </a><br><br>    
+                    <a href="index.php?pag=<?php echo $pag ?>&funcao=editar&id=<?php echo $id_produto ?>" class='text-primary mr-1' title='editar variações'><i class='fas fa-pen-square '> Editar Produto</i> </a><br><br>    
                     
-                    <a href="index.php?pag=<?php echo $pag ?>&funcao=carac&id=<?php echo $id_produto ?>" class='text-primary mr-1' title='editar caracteristicas'><i class='far fa-edit text-warning'> Editar Caracteristicas</i> </a><br><br>
+                    <a href="index.php?pag=<?php echo $pag ?>&funcao=carac&id=<?php echo $id_produto ?>" class='text-primary mr-1' title='editar variações'><i class='far fa-edit text-warning'> Editar Variações</i> </a><br><br>
                         
                         
                     <a href="index.php?pag=<?php echo $pag ?>&funcao=imagens&id=<?php echo $id_produto ?>" class='text-info mr-1' title='Inserir Imagens'><i class='fas fa-images '> Inserir Imagens</i></a><br><br>
@@ -827,7 +827,7 @@ $querye = $pdo->query("SELECT * FROM tipo_envios where id = '$tipo_envio' ");
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Adicionar Característica</h5>
+        <h5 class="modal-title">Adicionar Variações</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -837,7 +837,7 @@ $querye = $pdo->query("SELECT * FROM tipo_envios where id = '$tipo_envio' ");
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
-              <label >Característica</label>
+              <label >Variações</label>
               <select class="form-control form-control-sm" name="caract" id="caract">
                 <?php 
 

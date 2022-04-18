@@ -4,9 +4,7 @@
 $id_usuario = $_SESSION['id_usuario'];
 require_once('../../conexao.php');
 require_once('verificar-permissao.php');
-
 $pag = 'pdv';
-
 //VERIFICAR SE O CAIXA ESTÁ ABERTO
 $query = $pdo->query("SELECT * from caixa where operador = '$id_usuario' and status = 'Aberto' ");
 $res = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -14,13 +12,11 @@ $total_reg = @count($res);
 if($total_reg == 0){ 
   echo "<script language='javascript'>window.location='index.php'</script>";
 }
-
 if($desconto_porcentagem == 'Sim'){
   $desc = '%';
 }else{
   $desc = 'R$';
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -29,126 +25,73 @@ if($desconto_porcentagem == 'Sim'){
   <title>Frente de Caixa</title>
   <meta name="format-detection" content="telephone=no">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
   <link rel="stylesheet" href="../css/telapdv.css">
-
   <link rel="shortcut icon" href="../../img/favicon.ico" />
-
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-
-
 </head>
 <body>
-
-
   <div class='checkout'>
     <div class="row">
       <div class="col-md-5 col-sm-12">
         <div class='order py-2'>
           <p class="background">LISTA DE PRODUTOS</p>
-
           <span id="listar">
-
           </span>
-
-          
-
-
         </div>
       </div>
-
-      
-
       <div id='payment' class='payment col-md-7'>
         <form method="post" id="form-buscar">
           <div class="row py-2">
             <div class="col-md-7">
-
               <p class="background">CÓDIGO</p>
               <input type="text" class="form-control form-control-lg" id="codigo" name="codigo"  >
-
               <p class="background mt-3">PRODUTO</p>
               <input type="text" class="form-control  form-control-md" id="produto" name="produto" readonly>
-
               <p class="background mt-3">DESCRIÇÃO</p>
               <input type="text" class="form-control  form-control-md" id="descricao" name="descricao"   readonly>
-
               <div class="row">
                 <div class="col-6">
                   <p class="background mt-3">QUANTIDADE</p>
                   <input type="text" class="form-control  form-control-md" id="quantidade" name="quantidade"   >
-
                   <p class="background mt-3">VALOR UNITÁRIO</p>
                   <input type="text" class="form-control  form-control-md" id="valor_unitario" name="valor_unitario"   readonly>
-
                   <p class="background mt-3">ESTOQUE</p>
                   <input type="text" class="form-control  form-control-md" id="estoque" name="estoque"   readonly>
                 </div>
-
                 <div class="col-6 mt-4">
                   <img id="imagem" src="" width="100%">
                 </div>
               </div>
-
-
-
             </div>
-
             <div class="col-md-5">
-
               <p class="background">TOTAL DO ITEM</p>
               <input type="text" class="form-control form-control-md" id="total_item" name="total_item"   readonly>
-
-
               <p class="background mt-3">SUBTOTAL</p>
               <input type="text" class="form-control  form-control-md" id="sub_total_item" name="sub_total"   readonly>
-
               <p class="background mt-3">DESCONTO EM <?php echo $desc ?></p>
               <input type="text" class="form-control  form-control-md" id="desconto" name="desconto"  >
-
-
               <p class="background mt-3">CPF</p>
               <input type="text" class="form-control  form-control-md" id="cpf_cliente" name="cpf_cliente">
-
               <p class="background mt-3">Nome</p>
               <input type="text" class="form-control  form-control-md" id="nome_cliente" name="nome_cliente">
-
               <p class="background mt-3">WhatsApp</p>
               <input type="text" class="form-control  form-control-md" id="whatsapp_cliente" name="whatsapp_cliente">
-
               <input type="hidden" id="total_compra" name="total_compra">
               <input type="hidden" id="valor_recebido" name="valor_recebido">
               <input type="hidden" id="valor_troco" name="valor_troco">
               <input type="hidden" name="forma_pgto_input" id="forma_pgto_input">
               <input type="hidden" id="total_custo" name="total_custo">
-
             </div>
           </div>
- 
         </form>
-
-
-
       </div>
-      
-
     </div>
   </div>
-
 </body>
 </html>
-
-
-
-
-
-
 
 <div class="modal fade" tabindex="-1" id="modalDeletar" >
   <div class="modal-dialog">
@@ -159,7 +102,6 @@ if($desconto_porcentagem == 'Sim'){
       </div>
       <form method="POST" id="form-excluir">
         <div class="modal-body">
-
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Gerente</label>
             <select class="form-select mt-1" aria-label="Default select example" name="gerente">
@@ -168,52 +110,32 @@ if($desconto_porcentagem == 'Sim'){
               $res = $query->fetchAll(PDO::FETCH_ASSOC);
               $total_reg = @count($res);
               if($total_reg > 0){ 
-
                 for($i=0; $i < $total_reg; $i++){
                   foreach ($res[$i] as $key => $value){ }
                     ?>
-
                   <option value="<?php echo $res[$i]['id'] ?>"><?php echo $res[$i]['nome'] ?></option>
-
                 <?php }
-
               }else{ 
                 echo '<option value="">Cadastre um Gerente Administrador</option>';
-
               } ?>
-
-
             </select>
           </div>  
-
-
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Senha Gerente</label>
             <input type="password" class="form-control" id="senha_gerente" name="senha_gerente" placeholder="Senha Gerente" required="" >
           </div> 
-
           <small><div align="center" class="mt-1" id="mensagem-excluir">
-
           </div> </small>
-
         </div>
         <div class="modal-footer">
           <button type="button" id="btn-fechar" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
           <button name="btn-excluir" id="btn-excluir" type="submit" class="btn btn-danger">Excluir</button>
-
           <input name="id" type="hidden" id="id_deletar_item">
-
         </div>
       </form>
     </div>
   </div>
 </div>
-
-
-
-
-
-
 
 <div class="modal fade" tabindex="-1" id="modalVenda" >
   <div class="modal-dialog modal-lg">
@@ -224,7 +146,6 @@ if($desconto_porcentagem == 'Sim'){
       </div>
       <form method="POST" id="form-fechar-venda">
         <div class="modal-body">
-
           <div class="mb-3">
               <p class="background mt-3">FORMA DE PAGAMENTO</p>
             <select class="form-select mt-1" aria-label="Default select example" name="forma_pgto" id="forma_pgto">
@@ -238,48 +159,26 @@ if($desconto_porcentagem == 'Sim'){
                 for($i=0; $i < $total_reg; $i++){
                   foreach ($res[$i] as $key => $value){ }
                     ?>
-
                   <option value="<?php echo $res[$i]['codigo'] ?>"><?php echo $res[$i]['nome'] ?></option>
-
                 <?php }
-
               }else{ 
                 echo '<option value="">Cadastre uma Forma de Pagamento</option>';
-
               } ?>
-
- 
             </select>
-                           
-              
-
           </div>  
-
-
-          
           <small><div align="center" class="mt-1" id="mensagem-venda">
-
           </div> </small>
-
         </div>
         <div class="modal-footer">
 <!--          <button type="button" id="btn-fechar-venda" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>-->
           <button name="btn-venda" id="btn-venda" type="submit" class="btn btn-success">Fechar Venda</button>
-
-          
         </div>
       </form>
     </div>
   </div>
 </div>
 
-
-
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
-
-
-
 
 <script type="text/javascript">
   $(document).ready(function() {
@@ -290,9 +189,6 @@ if($desconto_porcentagem == 'Sim'){
     $('#imagem').attr('src', '../../img/produtos/sem-foto.jpg');
   } );
 </script>
-
-
-
 
 <!--AJAX PARA BUSCAR DADOS PARA OS INPUTS -->
 

@@ -17,38 +17,31 @@ $imagem = "";
 $valor = "";
 $valor_total = "";
 $total_vendaF = "";
-
+//PUXANDO OS DADOS DO PDV.PHP
 $codigo = $_POST['codigo'];
 $quantidade = $_POST['quantidade'];
 $desconto = $_POST['desconto'];
 $desconto = str_replace(',', '.', $desconto);
 $valor_recebido = $_POST['valor_recebido'];
 $valor_recebido = str_replace(',', '.', $valor_recebido);
-
 $forma_pgto_input = $_POST['forma_pgto_input'];
-
 //DEFINIR QUAL O TIPO DE PAGAMENTO E REDIRECIONAR PARA API
 if($forma_pgto_input == '2'){
 	//VAMOS REDIRECIONR PARA PAGAMENTO NO CRÉDITO
 }
-
 //FECHAR A VENDA SE TIVER PAGAMENTO
 if($forma_pgto_input != ""){
 	$troco = $_POST['valor_troco'];
 	$troco = str_replace('R$', '', $troco);
 	$troco = str_replace(',', '.', $troco);
-
 	$total_compra = $_POST['total_compra'];
     $total_custo = $_POST['total_custo'];
 	$total_compra = str_replace('R$', '', $total_compra);
 	$total_compra = str_replace(',', '.', $total_compra);
-
-	
 	if($total_compra <= 0){
 		echo 'Não é possível efetuar uma venda sem itens!';
 		exit();
 	}
-
 	if($valor_recebido == ""){
 		$valor_recebido = $total_compra;
 	} 
@@ -62,7 +55,6 @@ if($forma_pgto_input != ""){
 //	}else{
 //		$desconto = 'R$ 0,00';
 //	}
-    
 	if($desconto == ""){
 		$desconto = 0;
 	}

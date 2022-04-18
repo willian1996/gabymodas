@@ -92,8 +92,13 @@ if(@$_SESSION['id_usuario'] == null || @$_SESSION['nivel_usuario'] != 'Cliente')
 
            </td>
            <td><?php echo $total ?>
-               <a href="" onclick="verProdutos('<?php echo $id_venda ?>')" title="Ver Produtos">
-               <i class="fas fa-eye mr-1 text-primary">Ver</i></a>
+               
+               <?php if($pago != 'Sim'){  ?>
+              <small><a target="_blank" class="text-danger" href="../../checkout.php?id_venda=<?php echo $id_venda ?>" title="Efetuar Pagamento">
+                <i class="far fa-money-bill-alt mr-1 text-danger"></i>Pagar </a></small>
+            <?php }else{ ?>
+              <?php echo "Pago" ?>
+            <?php } ?>
               
           </td>
 
@@ -106,24 +111,14 @@ if(@$_SESSION['id_usuario'] == null || @$_SESSION['nivel_usuario'] != 'Cliente')
               echo '<img src="../../img/correios.png" width"25px" height="25"><a class="text-primary" title="Código de Postagem"><small>'. $rastreio .'</small></a>';
             }else{
               echo $status;
-            } ?>    
+            } ?>  
+              <a href="" onclick="verProdutos('<?php echo $id_venda ?>')" title="Ver Produtos">
+               <i class="fas fa-eye mr-1 text-primary">Ver</i></a>
           </td>
 
 
               
-<!--
-         <td>
-
-
-            <?php if($pago != 'Sim'){  ?>
-              <small><a target="_blank" class="text-danger" href="../../checkout.php?id_venda=<?php echo $id_venda ?>" title="Efetuar Pagamento">
-                <i class="far fa-money-bill-alt mr-1 text-danger"></i>
-              Pagar </a></small>
-            <?php }else{ ?>
-              <?php echo $pago ?>
-            <?php } ?>
-          </td>
--->
+         
 
 
   
