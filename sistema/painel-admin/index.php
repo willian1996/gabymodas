@@ -103,7 +103,7 @@ $pdo->query("UPDATE produtos SET promocao = 'Sim' where id = $id_pro");
     <meta name="description" content="">
     <meta name="author" content="Hugo Vasconcelos">
 
-    <title>SalesSystem</title>
+    <title>toSALES</title>
 
     <!-- Custom fonts for this template-->
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -138,7 +138,7 @@ $pdo->query("UPDATE produtos SET promocao = 'Sim' where id = $id_pro");
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
 
-                <div class="sidebar-brand-text mx-3">SaleSystem</div>
+                <div class="sidebar-brand-text mx-3">toSALES</div>
             </a>
 
             <!-- Divider -->
@@ -148,7 +148,7 @@ $pdo->query("UPDATE produtos SET promocao = 'Sim' where id = $id_pro");
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePed" aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-book"></i>
-                    <span>Pedidos Online</span>
+                    <span>Vendas Online</span>
                 </a>
                 
                 <div id="collapsePed" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
@@ -176,8 +176,9 @@ $pdo->query("UPDATE produtos SET promocao = 'Sim' where id = $id_pro");
                 </div>
                 
         </li>
+<!--
             
-            <!-- Heading -->
+             Heading 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseVendas" aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-clipboard-list"></i>
@@ -194,6 +195,7 @@ $pdo->query("UPDATE produtos SET promocao = 'Sim' where id = $id_pro");
                 </div>
                 
             </li>
+-->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFisica" aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-store"></i>

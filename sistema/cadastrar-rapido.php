@@ -2,7 +2,7 @@
 //ESTE CADASTRO RAPIDO É SOLICITADO ANTES DO CLIENTE COLOCAR OS PRODUTOS NO CARRINHO
 require_once("../conexao.php");
 @session_start();
- 
+  
 $nome = filtraEntrada($_POST['nome_rapido']);
 $cpf = filtraEntrada($_POST['cpf_rapido']);
 $cpf = removeMascCPF($cpf);

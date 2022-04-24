@@ -103,6 +103,136 @@ $total_item = $valor * $quantidade;
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
     <link rel="icon" href="img/favicon.ico" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    
+    <style>
+/*        CSS DINAMICO COM PHP */
+
+        .section-title h2:after {
+            background: <?php echo $corPadraoPagina ?>;
+        }
+
+        .primary-btn {
+            background: <?php echo $corPadraoPagina ?>;
+        }
+
+        .site-btn {
+            background: <?php echo $corPadraoPagina ?>;
+        }
+
+        .header__menu ul li .header__menu__dropdown li:hover>a {
+            color: <?php echo $corPadraoPagina ?>;
+        }
+
+        .header__menu ul li.active a {
+            color: <?php echo $corPadraoPagina ?>;
+        }
+
+        .header__menu ul li:hover>a {
+            color: <?php echo $corPadraoPagina ?>;
+        }
+
+        .header__cart ul li a span {
+            background: <?php echo $corPadraoPagina ?>;
+        }
+
+        .hero__search__phone__icon {
+            color: <?php echo $corPadraoPagina ?>;
+        }
+
+        .hero__text span {
+            color: <?php echo $corPadraoPagina ?>;
+        }
+
+        .featured__controls ul li:after {
+            background: <?php echo $corPadraoPagina ?>;
+        }
+
+        .featured__item__pic__hover li:hover a {
+            background: <?php echo $corPadraoPagina ?>;
+            border-color: <?php echo $corPadraoPagina ?>;
+        }
+
+        .filter__option span:hover {
+            color: <?php echo $corPadraoPagina ?>;
+        }
+
+        .product__item__pic__hover li:hover a {
+            background: <?php echo $corPadraoPagina ?>;
+            border-color: <?php echo $corPadraoPagina ?>;
+        }
+
+        .product__pagination a:hover,
+        .blog__pagination a:hover {
+            background: <?php echo $corPadraoPagina ?>;
+            border-color: <?php echo $corPadraoPagina ?>;
+        }
+
+        .checkout__input__checkbox label input:checked~.checkmark {
+            background: <?php echo $corPadraoPagina ?>;
+            border-color: <?php echo $corPadraoPagina ?>;
+        }
+
+        .blog__sidebar__item ul li a:hover {
+            color: <?php echo $corPadraoPagina ?>;
+        }
+
+        .blog__details__widget .blog__details__social a:hover {
+            color: <?php echo $corPadraoPagina ?>;
+        }
+
+        .footer__widget .footer__widget__social a:hover {
+            background: <?php echo $corPadraoPagina ?>;
+        }
+
+        .contact__widget span {
+            color: <?php echo $corPadraoPagina ?>;
+        }
+
+        .map .map-inside i {
+            color: <?php echo $corPadraoPagina ?>;
+        }
+
+        .humberger__menu__cart ul li a span {
+            background: <?php echo $corPadraoPagina ?>;
+        }
+
+        .humberger__menu__wrapper .slicknav_nav a:hover {
+            color: <?php echo $corPadraoPagina ?>;
+        }
+
+        .humberger__menu__cart ul li a span {
+            background: <?php echo $corPadraoPagina ?>;
+        }
+
+        .humberger__menu__wrapper .slicknav_nav a:hover {
+            color: <?php echo $corPadraoPagina ?>;
+        }
+
+        .footer-widget ul li a:hover:after {
+            background: <?php echo $corPadraoPagina ?>;
+        }
+
+        .footer-widget ul li a:hover:after {
+            background: <?php echo $corPadraoPagina ?>;
+        }
+
+        .footer-widget ul li a:after {
+            border: 1px solid <?php echo $corPadraoPagina ?>;
+        }
+
+        .contact-widget .con-info span {
+            color: <?php echo $corPadraoPagina ?>;
+        }
+        
+        .fw-latest-post-widget .lp-content .readmore {
+
+            color: <?php echo $corPadraoPagina ?>;
+        }
+
+
+    
+    </style>
+
 
     <!-- Google Tag Manager -->
     <script>
@@ -132,7 +262,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="humberger__menu__overlay"></div>
     <div class="humberger__menu__wrapper">
         <div class="humberger__menu__logo">
-            <a  href="index.php"><img class="logo" src="img/logo.jpg" alt=""></a>
+            <a  href="index.php"><img class="logo" src="img/logos/logo-gabymodas.jpg" alt=""></a>
         </div>
         <div class="humberger__menu__cart">
             <ul>
@@ -225,7 +355,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="row"> 
             <div class="col-lg-3">
                 <div class="header__logo">
-                    <a href="./index.php"><img class="logo" src="img/logo.jpg" alt=""></a>
+                    <a href="./index.php"><img class="logo" src="img/logos/logo-gabymodas.jpg" alt=""></a>
                 </div>
             </div>
         <div class="col-lg-6">

@@ -6,7 +6,7 @@ $nome = filtraEntrada($_POST['nome_cadastro']);
 $cpf = filtraEntrada($_POST['cpf_cadastro']);
 $cpf = removeMascCPF($cpf);
 $telefone = filtraEntrada($_POST['telefone_cadastro']);
-$email = "$cpf@gabymodas.com";
+$email = filtraEntrada($_POST['email']);
 $rua = filtraEntrada($_POST['rua_cadastro']);
 $numero = filtraEntrada($_POST['numero_cadastro']);
 $bairro = filtraEntrada($_POST['bairro_cadastro']);
@@ -15,8 +15,10 @@ $estado = filtraEntrada($_POST['estado_cadastro']);
 $cep = filtraEntrada($_POST['cep_cadastro']);
 $complemento = filtraEntrada($_POST['complemento_cadastro']);
 $data_cadastro = dataAtual();
+$senha = filtraEntrada($_POST['senha']);
+$senha_crip = filtraEntrada(md5($senha));
   
-
+ 
 if($nome == ""){
 	echo 'Preencha o campo nome!';
 	exit();
@@ -101,6 +103,16 @@ if($complemento == ""){
     exit;
 }
 
+if($senha == ""){
+	echo 'Preencha o campo senha!';
+	exit();
+}
+
+if($senha != $_POST['confirmar-senha']){
+	echo 'As senhas não coincidem!';
+	exit();
+}
+
 
 
 
@@ -116,8 +128,8 @@ if(@count($dados) == 0){
 	$res->bindValue(":nome", $nome);
 	$res->bindValue(":email", $email);
 	$res->bindValue(":cpf", $cpf);
-	$res->bindValue(":senha", "-");
-	$res->bindValue(":senha_crip", "-");
+	$res->bindValue(":senha", $senha);
+	$res->bindValue(":senha_crip", $senha_crip);
 	$res->bindValue(":nivel", 'Cliente');
 
 	$res->execute();

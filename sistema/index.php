@@ -44,11 +44,15 @@ require_once("../conexao.php");
 						 <div class="col-md-12 text-center">
 							<h1 style="color:#F60C89">Identifique-se</h1>
 						 </div>
-					</div>
+		 			</div>
                    <form action="autenticar.php" method="post" name="login" autocomplete="off">
                            <div class="form-group">
-                              <label for="exampleInputEmail1">CPF</label>
-                              <input type="text" value="<?php echo @$_GET['cpf'] ?>" name="cpf_login"  class="form-control" id="cpf_login" aria-describedby="emailHelp" placeholder="">
+                              <label for="exampleInputEmail1"></label>
+                              <input type="text" value="<?php echo @$_GET['cpf'] ?>" name="cpf_login"  class="form-control" id="cpf_login" aria-describedby="emailHelp" placeholder="CPF">
+                           </div>
+                           <div class="form-group">
+                              <label for="exampleInputEmail1"></label>
+                              <input type="password" name="senha_login" id="senha_login"  class="form-control" aria-describedby="emailHelp" placeholder="Senha">
                            </div>
                            <div class="col-md-12 text-center mt-4">
                               <button style="background-color:#F60C89" type="submit" class=" btn btn-block mybtn btn-primary tx-tfm">Entrar</button>
@@ -58,14 +62,13 @@ require_once("../conexao.php");
                            
 
                            <div class="form-group mt-4">
-<!--
                               <small>
                               <p class="text-center">Não possui cadastro? <a href="#" data-toggle="modal" data-target="#modalCadastro">Cadastre-se</a></p>
+                              <p class="text-center"><a class="text-danger" href="#" data-toggle="modal" data-target="#modalRecuperar">Recuperar Senha?</a></p>
                               
                                   
                                   
                            </small>
--->
                            </div>
                         </form>
                  
@@ -118,13 +121,11 @@ require_once("../conexao.php");
     
   </div>
 
-<!--
     <div class="form-group">
      <label for="exampleInputEmail1">E-mail</label>
      <input value="<?php echo @$_GET['email_rodape'] ?>" type="email" class="form-control" id="email" name="email" placeholder="">
     
   </div>
--->
   <div class="form-group">
      <label for="exampleInputEmail1">CEP</label>
      <input type="text" class="form-control" id="cep" name="cep_cadastro" placeholder="digite o cep para pesquisar o endereço" >
@@ -165,7 +166,6 @@ require_once("../conexao.php");
 
 
 
-<!--
   <div class="row">
 
    <div class="col-md-6">
@@ -185,7 +185,6 @@ require_once("../conexao.php");
 </div>
 
 </div>
--->
 
 
   

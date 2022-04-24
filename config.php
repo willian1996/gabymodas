@@ -3,7 +3,7 @@ define("ENVIRONMENT", "development"); //versão para maquina local
 #define("ENVIRONMENT", "production"); //versão para hospedar
 date_default_timezone_set('America/Sao_Paulo');
 
-  
+   
 if(ENVIRONMENT == 'development'){
     $url_loja = "http://localhost/gabymodas/";
     $banco = 'gabymodas';
@@ -41,6 +41,8 @@ $cnpj_sistema = "42865151840";
 //VARIAVEIS DO SITE
 $itens_por_pagina = 20;
 
+//CSS PADRÃO DA PAGINA
+$corPadraoPagina = "#F50D87";
 
 
 //CONFIGURAÇÕES DO FRETE DOS CORREIOS
